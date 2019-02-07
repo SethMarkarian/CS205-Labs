@@ -1,0 +1,13 @@
+Lab 1
+Style (7.5/10 pts)
+Passwordless authentication (Lab 1.1) (40/40 pts)
+Initializing a Git repository (Lab 1.2) (20/20 pts)
+Both lab partners making changes/commits (Lab 1.2) (30/30 pts)
+TOTAL 97.5/100
+
+Remarks. Very good work, Chloe and Seth.
+
+I saw evidence of both of you committing changes to the repo.
+
+There were extra files in your lab .ssh folder, or one level above this (-2.5 pts). Generally throughout semester, try not to leave unnecessary files hanging around.
+
