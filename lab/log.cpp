@@ -50,10 +50,19 @@ void Log::flush_fh()
 
 void Log::open_empty()
 {
-    fh.open(fn, ios::noreplace);
+    fh.open(fn, std::ios::app);
     /*fh.open(fn, std::ofstream::out | std::ofstream::app);
     if(!fh)
     {
 
     }*/
+}
+void Log::open_append(std::string s)
+{
+    fh.open(fn, std::ios::app);
+    fh << s;
+}
+
+bool Log::det_state() {
+    return fh.is_open();
 }

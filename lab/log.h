@@ -25,7 +25,7 @@ public:
     void open_fh();
     void close_fh();
     void flush_fh();
-    void open_append();
+    void open_append(std::string s);
     void open_empty();
     bool det_state(); // Returns true if open, false if closed
 
