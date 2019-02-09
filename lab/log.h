@@ -8,8 +8,7 @@
 
 class Log
 {
-    // The file handler
-    std::ofstream fh;
+
     // File name
     std::string fn;
     // File state, true if open, false if closed
@@ -22,15 +21,19 @@ public:
     Log(std::string file_name); // constructor with file name passed as a parameter
     ~Log(); // destructor
 
+    // The file handler
+    std::ofstream fh;
+
     void open_fh();
     void close_fh();
     void flush_fh();
-    void open_append(std::string s);
+    void open_append();
     void open_empty();
     bool det_state(); // Returns true if open, false if closed
 
     // overloaded handler operator
-    Log& operator<<(const std::string str);
+    //Log& operator<<(const std::string& str);
+    //Log& operator<<(const char* c);
     Log& operator<<(int n);
     Log& operator<<(bool b);
     Log& operator<<(double d);

@@ -4,7 +4,7 @@
 // In the default constructor the file handler is opened.
 Log::Log()
 {
-    Log("./exampleLogFile.txt");
+    Log("./exampleLogFile1.txt");
 }
 
 Log::Log(std::string file_name)
@@ -12,6 +12,8 @@ Log::Log(std::string file_name)
     state = true;
     fn = file_name;
     fh.open(fn, std::ofstream::out | std::ofstream::app);
+    fh << "hello";
+    *this << 10;
 }
 
 // In the destructor the file handler is closed.
@@ -23,17 +25,27 @@ Log::~Log()
 // The overloaded operator will process the incoming string, then return
 // itself as a reference. This allows chaining of multiple filehandle
 // operations.
-Log& Log::operator<<(std::string str)
+/*
+Log& Log::operator<<(const std::string& str)
 {
     fh << str;
     return *this;
 }
 
+Log& Log::operator<<(const char* c)
+{
+    fh << c;
+    return *this;
+}
+*/
+
 Log& Log::operator<<(int n)
 {
     fh << n;
+    std::cout << fh.is_open();
     return *this;
 }
+
 
 Log& Log::operator<<(bool b)
 {
@@ -72,12 +84,12 @@ void Log::flush_fh()
 void Log::open_empty()
 {
     state = true;
-    fh.open(fn, std::ios::app | std::ios::trunc);
+    fh.open(fn, std::ios::out | std::ios::trunc);
 }
-void Log::open_append(std::string s)
+
+void Log::open_append()
 {
-    fh.open(fn, std::ios::app);
-    fh << s;
+    fh.open(fn, std::ios::out | std::ios::app);
 }
 
 bool Log::det_state() {
