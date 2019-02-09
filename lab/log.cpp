@@ -9,6 +9,7 @@ Log::Log()
 
 Log::Log(std::string file_name)
 {
+    state = true;
     fn = file_name;
     fh.open(fn, std::ofstream::out | std::ofstream::app);
 }
@@ -28,8 +29,27 @@ Log& Log::operator<<(std::string str)
     return *this;
 }
 
+Log& Log::operator<<(int n)
+{
+    fh << n;
+    return *this;
+}
+
+Log& Log::operator<<(bool b)
+{
+    fh << b;
+    return *this;
+}
+
+Log& Log::operator<<(double d)
+{
+    fh << d;
+    return *this;
+}
+
 void Log::open_fh()
 {
+    state = true;
     fh.open(fn, std::ofstream::out | std::ofstream::app); //over write, change app to trunc
     if(!fh)
     {
@@ -40,6 +60,7 @@ void Log::open_fh()
 
 void Log::close_fh()
 {
+    state = false;
     fh.close();
 }
 
@@ -50,12 +71,8 @@ void Log::flush_fh()
 
 void Log::open_empty()
 {
-    fh.open(fn, std::ios::app);
-    /*fh.open(fn, std::ofstream::out | std::ofstream::app);
-    if(!fh)
-    {
-
-    }*/
+    state = true;
+    fh.open(fn, std::ios::app | std::ios::trunc);
 }
 void Log::open_append(std::string s)
 {
@@ -64,5 +81,6 @@ void Log::open_append(std::string s)
 }
 
 bool Log::det_state() {
-    return fh.is_open();
+    return state;
 }
+

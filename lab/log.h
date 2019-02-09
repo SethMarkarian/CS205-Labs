@@ -31,6 +31,9 @@ public:
 
     // overloaded handler operator
     Log& operator<<(const std::string str);
+    Log& operator<<(int n);
+    Log& operator<<(bool b);
+    Log& operator<<(double d);
     // other datatypes to overload: int, long, short, this doesn't seem feasible
     // can we pass in an auto in a parameter
     // pick a few
