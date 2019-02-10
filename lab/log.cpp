@@ -4,16 +4,22 @@
 // In the default constructor the file handler is opened.
 Log::Log()
 {
-    Log("./exampleLogFile1.txt");
+    state = true;
+    fn = "./exampleLogFile.txt";
+    fh.open(fn, std::ofstream::out | std::ofstream::app);
 }
 
 Log::Log(std::string file_name)
 {
     state = true;
     fn = file_name;
-    fh.open(fn, std::ofstream::out | std::ofstream::app);
-    fh << "hello";
-    *this << 10;
+    try {
+        fh.open(fn, std::ofstream::out | std::ofstream::app);
+    }
+    catch (int e) {
+        std::cout << "Exception: " << e;
+    }
+
 }
 
 // In the destructor the file handler is closed.
@@ -25,7 +31,7 @@ Log::~Log()
 // The overloaded operator will process the incoming string, then return
 // itself as a reference. This allows chaining of multiple filehandle
 // operations.
-/*
+
 Log& Log::operator<<(const std::string& str)
 {
     fh << str;
@@ -37,15 +43,12 @@ Log& Log::operator<<(const char* c)
     fh << c;
     return *this;
 }
-*/
 
 Log& Log::operator<<(int n)
 {
     fh << n;
-    std::cout << fh.is_open();
     return *this;
 }
-
 
 Log& Log::operator<<(bool b)
 {
@@ -61,19 +64,31 @@ Log& Log::operator<<(double d)
 
 void Log::open_fh()
 {
-    state = true;
-    fh.open(fn, std::ofstream::out | std::ofstream::app); //over write, change app to trunc
-    if(!fh)
-    {
-        std::cerr << "Unable to open file " << fn;
-        exit(1); // call system to stop
+    try {
+        state = true;
+        fh.open(fn, std::ofstream::out | std::ofstream::app); //over write, change app to trunc
+        if(!fh)
+        {
+            std::cerr << "Unable to open file " << fn;
+            exit(1); // call system to stop
+        }
     }
+    catch (int e) {
+        std::cout << "Exception: " << e;
+    }
+
 }
 
 void Log::close_fh()
 {
-    state = false;
-    fh.close();
+    try {
+        state = false;
+        fh.close();
+    }
+    catch (int e) {
+        std::cout << "Exception: " << e;
+    }
+
 }
 
 void Log::flush_fh()
@@ -95,4 +110,3 @@ void Log::open_append()
 bool Log::det_state() {
     return state;
 }
-
