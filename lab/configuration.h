@@ -16,6 +16,7 @@ class Configuration
 
 public:
     Configuration(std::string fn);
+    ~Configuration(std::string fn);
     std::string get_value(std::string key);
     void set(std::string key, std::string value);
     void change_file_name(std::string fn);

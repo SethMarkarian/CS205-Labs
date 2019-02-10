@@ -7,6 +7,12 @@ Configuration::Configuration(std::string fn)
     reload();
 }
 
+~Configuration::Configuration()
+{
+    name = fn;
+    reload();
+}
+
 std::string Configuration::get_value(std::string key) {
     return m.find(key) -> second;
 }

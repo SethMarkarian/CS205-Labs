@@ -1,45 +1,66 @@
 #ifndef LOG_H
 #define LOG_H
 
-// The header file for the minimal Log class
+/*! The header file for the minimal Log class */
 #include <fstream>
 #include <string>
 #include <iostream>
 
+//! The log class creates, edits, and closes .txt files
 class Log
 {
 
     // File name
-    std::string fn;
-    // File state, true if open, false if closed
-    bool state;
-    // The file handler
-    std::ofstream fh;
+    std::string fn; /*! File name */
+
+    bool state; /*! File state, true if open, false if closed */
+
+    std::ofstream fh; /*! The file handler */
 
 
 
 public:
-    Log(); // default constructor
-    Log(std::string file_name); // constructor with file name passed as a parameter
-    ~Log(); // destructor
+    /*! default constructor */
+    Log();
 
+    /*! constructor with file name passed as a parameter */
+    Log(std::string file_name);
+
+    /*! destructor */
+    ~Log();
+
+    /*! opens file handler */
     void open_fh();
+
+    /*! closes file handler */
     void close_fh();
+
+    /*! flushes file handler */
     void flush_fh();
+
+    /*! opens file handler and appends */
     void open_append();
+
+    /*! opens an empty file handler */
     void open_empty();
-    bool det_state(); // Returns true if open, false if closed
 
-    // overloaded handler operator
+    /*! returns status of the file, true if open, false if closed */
+    bool det_state();
+
+    /*! overrides the "<<" operator for strings */
     Log& operator<<(const std::string& str);
-    Log& operator<<(const char* c);
-    Log& operator<<(int n);
-    Log& operator<<(bool b);
-    Log& operator<<(double d);
-    // other datatypes to overload: int, long, short, this doesn't seem feasible
-    // can we pass in an auto in a parameter
-    // pick a few
 
+    /*! overrides the "<<" operator for char */
+    Log& operator<<(const char* c);
+
+    /*! overrides the "<<" operator for int */
+    Log& operator<<(int n);
+
+    /*! overrides the "<<" operator for bool */
+    Log& operator<<(bool b);
+
+    /*! overrides the "<<" operator for double */
+    Log& operator<<(double d);
 };
 
 #endif // LOG_H
