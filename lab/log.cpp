@@ -1,5 +1,6 @@
 #include "log.h"
 
+
 /*! In the default constructor the file handler is opened. */
 Log::Log()
 {

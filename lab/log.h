@@ -1,11 +1,11 @@
 #ifndef LOG_H
 #define LOG_H
 
-/*! The header file for the minimal Log class */
 #include <fstream>
 #include <string>
 #include <iostream>
 
+/*! The header file for the minimal Log class */
 //! The log class creates, edits, and closes .txt files
 class Log
 {
