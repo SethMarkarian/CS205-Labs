@@ -1,12 +1,17 @@
-#include "configuration.h"
+﻿#include "configuration.h"
+
+Configuration::Configuration()
+{
+    name = "shortened_words.txt";
+}
 
 //! Constructor for Configuration Class
 Configuration::Configuration(std::string fn)
 {
     name = fn; //! assigns file name
-    // std::cout << 1; // testing
+    //std::cout << 1; // testing
     reload(); //! loads data from file
-    // std::cout << 2; //testing
+    //std::cout << 2; //testing
 }
 
 //! Destructor for Configuration Class
@@ -22,7 +27,6 @@ std::string Configuration::get_value(std::string key) {
 
 //! Set a key and value
 void Configuration::set(std::string key, std::string value) {
-    std::cout << "setting ";
     m.insert(std::pair<std::string, std::string> (key, value)); //! inserts into map a string pair of key, value
 }
 
@@ -52,39 +56,42 @@ void Configuration::change_file_path(std::string fp) {
 }
 
 //! Reloads the configuration data
-void Configuration::reload() {
-    m.clear(); //! clears the current map
+void Configuration::reload()
+{
+    m.clear();
     try {
-        std::ifstream src(name, std::ios::in); //! ifstream of name file
-        while(!src.eof()) { //! while not at end of name file
-            char * cline; //! declares and instatiates
-            src >> cline; //! sends line in name file to cline
-            char aline[256]; //! declares aline to length 256
-            strcpy(aline, cline); //! copies contents of cline to aline
-            char * key; //! declares a char * for key
-            char * val; //! declares a char * for val
-            key = strtok(aline, ":"); //! assigns key value
-            val = strtok(NULL, ":"); //! assigns val value
-            m[key] = val; //! maps key to val in m
+        std::ifstream src(name, std::ios::in);
+        while(!src.eof())
+        {
+            char aline[256];
+            src >> aline;
+            char * checker;
+            checker = strchr(aline, ':');
+            if(checker == NULL)
+            {
+                continue;
+            }
+            char * key;
+            char * val;
+            key = strtok(aline, ":");
+            val = strtok(NULL, ":");
+            m[key] = val;
+            contin:;
         }
     }
     catch (int e) {
         std::cout << "Exception: " << e;
     }
-    // std::cout << "t "; // testing
 }
 
 //! Stores state of current map
 void Configuration::store_state() {
-    std::cout << "starting ";
     Log l (name); //! declaring a Log object for the name file
     l.close_fh(); //! closes the default ofstream of Log
     l.open_empty(); //! opens to rewrite the file
-    std::cout << "to the loop ";
     for(std::map<std::string, std::string>::iterator it = m.begin(); it != m.end(); it++) //! iterates through the map
     {
         l << it -> first << ":" << it -> second << "\n"; //! writes to file in format key:value
-        std::cout << "storing ";
     }
     l.flush_fh(); //! flushes the Log
     l.close_fh(); //! closes the Log

@@ -11,10 +11,11 @@ int main()
     err_log.open_empty();
     err_log << "mike:michael\n";
     err_log << "seth:sethchael\n";
-    err_log << "bike:bichael";
+    err_log << "bike:bichael\n";
     err_log.flush_fh();
     err_log.close_fh();
     Configuration config("shortened_words.txt");
+    //std::cout << "hihi";
     config.set("hi", "hello");
     config.set("bye", "goodbye");
     config.store_state();

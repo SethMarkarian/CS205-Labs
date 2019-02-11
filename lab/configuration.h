@@ -23,6 +23,7 @@ class Configuration
     std::string name; //! file name
 
 public:
+    Configuration();
     //! Constructor
     /*!
      * \brief Configuration constructor
