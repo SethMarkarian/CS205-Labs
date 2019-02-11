@@ -58,25 +58,25 @@ void Configuration::change_file_path(std::string fp) {
 //! Reloads the configuration data
 void Configuration::reload()
 {
-    m.clear();
+    m.clear(); //! clears the current map values
     try {
-        std::ifstream src(name, std::ios::in);
-        while(!src.eof())
+        std::ifstream src(name, std::ios::in); //! to read the source (src) file
+        while(!src.eof()) //! while not at end of file
         {
-            char aline[256];
-            src >> aline;
-            char * checker;
-            checker = strchr(aline, ':');
-            if(checker == NULL)
+            char aline[256]; //! declare and initialize variable to store inputs in; 256 is an arbitrary number
+            src >> aline; //! assigns the next src line to aline
+            char * checker; //! will be used to check validity of line
+            checker = strchr(aline, ':'); //! checks if ':' exists in aline
+            if(checker == NULL) //! if not, continue
             {
                 continue;
             }
-            char * key;
-            char * val;
-            key = strtok(aline, ":");
-            val = strtok(NULL, ":");
-            m[key] = val;
-            contin:;
+            char * key; //! declare char * for key
+            char * val; //! declare char * for value
+            key = strtok(aline, ":"); //! assign key's value
+            val = strtok(NULL, ":"); //! assign val's value
+            m[key] = val; //! map key to val
+            contin:; //! continue statement from above
         }
     }
     catch (int e) {
