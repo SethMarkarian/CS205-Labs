@@ -71,5 +71,7 @@ public:
      * \brief store_state stores the map state in a file
      */
     void store_state();
+
+    std::string get_filename();
 };
 #endif // CONFIGURATION_H

@@ -3,9 +3,8 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp
-
-### add the following lines
+SOURCES += \
+        main.cpp
 
 # if you have pthread errors, comment/uncomment the next line
 LIBS += -pthread
