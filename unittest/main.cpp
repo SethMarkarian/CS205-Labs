@@ -49,6 +49,17 @@
                                                      << " should match!";
  }
 
+ TEST(general, TESTSIMPLE2) {
+
+     /** replace with your own s1.get_filename() **/
+     Configuration s1;
+     Configuration s2("test");
+     ASSERT_EQ("hello", s2.get_filename()) << s1.get_filename()
+                                                     << " and "
+                                                     << s2.get_filename()
+                                                     << " should match!";
+ }
+
  TEST_F(FooTest, TESTFIXTURE) {
 
      /** replace with your own **/
