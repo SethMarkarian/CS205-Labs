@@ -1,4 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    lab
+    lab \
+    unittest \
+    Engines

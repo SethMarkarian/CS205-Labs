@@ -96,3 +96,7 @@ void Configuration::store_state() {
     l.flush_fh(); //! flushes the Log
     l.close_fh(); //! closes the Log
 }
+
+std::string Configuration::get_filename() {
+    return name;
+}
