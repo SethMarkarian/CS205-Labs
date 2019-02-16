@@ -1,3 +1,20 @@
+Lab 2
+Commenting and documentation (10/10 pts)
+Style (7/10 pts)
+qtrepo set up with appropriate folder structure (Lab 2.1) (8/10 pts)
+Log class (Lab 2.2) (30/30 pts)
+Config class (Lab 2.2) (40/40 pts)
+TOTAL 95/100
+
+Remarks. Excellent work, Seth and Chloe.
+
+The folder structure was not quite as requested (lab rather than tools) and your instance variables need to be private with getters and setters where appropriate (-5 pts).
+
+The Git log demonstrated a healthy working style – regular commits coming from both of you.
+
+Apart from that, the documentation and structure of your code is very good indeed, and unlike many other students, you demonstrated it succinctly for me in main(). Keep up the good work. For Lab 3, use main() and tests to continue excellent demonstration of functionality.
+
+
 Lab 1
 Style (7.5/10 pts)
 Passwordless authentication (Lab 1.1) (40/40 pts)
