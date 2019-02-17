@@ -34,11 +34,6 @@
    // Objects declared here can be used by all tests in the test case for Foo.
 
    /** replace with your own **/
-   Robots r1;
-   Robots r2;
-
-   Worm w1;
-   Worm w2;
 
  };
 
@@ -49,7 +44,7 @@
      std::pair<int, int> x;
 
      r1.movePlayer("n");
-     x.first = 2;
+     x.first = 3;
      x.second = 1;
 
      ASSERT_EQ(r1.player, x);
