@@ -50,7 +50,7 @@
 
      r1.movePlayer("n");
      x.first = 2;
-     x.second = 2;
+     x.second = 1;
 
      ASSERT_EQ(r1.player, x);
  }

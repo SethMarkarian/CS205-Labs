@@ -3,7 +3,6 @@
 #define ROWS 5
 #define COLS 3
 #include <iostream>
-#include <cstdlib>
 
 class Robots
 {
