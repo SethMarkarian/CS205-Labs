@@ -42,18 +42,114 @@
 
  };
 
- TEST(general, TESTSIMPLE) {
+ TEST(general, TESTNORTH) {
 
      /** replace with your own **/
      Robots r1;
      std::pair<int, int> x;
 
-     r1.movePlayer("n");
+     r1.movePlayerN();
+     x.first = 1;
+     x.second = 1;
+
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTSOUTH) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerS();
+     x.first = 1;
+     x.second = 3;
+
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTEAST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerE();
+     x.first = 2;
+     x.second = 2;
+
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTWEST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerW();
+     x.first = 0;
+     x.second = 2;
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTNORTHEAST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerNE();
+     x.first = 0;
+     x.second = 1;
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTNORTHWEST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerNW();
      x.first = 2;
      x.second = 1;
 
      ASSERT_EQ(r1.player, x);
  }
+
+ TEST(general, TESTSOUTHEAST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerSE();
+     x.first = 0;
+     x.second = 3;
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+ TEST(general, TESTSOUTHWEST) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerSW();
+     x.first = 2;
+     x.second = 3;
+
+     ASSERT_EQ(r1.player, x);
+ }
+
+
  int main(int argc, char **argv) {
 
      ::testing::InitGoogleTest(&argc, argv);

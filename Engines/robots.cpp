@@ -11,7 +11,7 @@ Robots::Robots()
     robots[1].second = 4;
     robots[2].first = 5;
     robots[2].second = 0;
-    player.first = 3;
+    player.first = 1;
     player.second = 2;
 }
 
@@ -42,19 +42,54 @@ Robots::~Robots() {
  * @brief Robots::movePlayer moves player based on input "n, s, e, w, ne, nw, se, sw, *"
  * @param movement direction
  */
-void Robots::movePlayer(std::string movement) {
-    if(movement.compare("e") || movement.compare("ne") || movement.compare("se")) {
-        player.first += 1;
+void Robots::movePlayerN() {
+    player.second -= 1;
+}
+
+void Robots::movePlayerS() {
+    player.second += 1;
+}
+
+void Robots::movePlayerE() {
+    player.first += 1;
+}
+
+void Robots::movePlayerW() {
+    player.first -= 1;
+}
+
+void Robots::movePlayerNE() {
+    player.first -= 1;
+    player.second -= 1;
+}
+
+void Robots::movePlayerNW() {
+    player.first += 1;
+    player.second -= 1;
+}
+
+void Robots::movePlayerSE() {
+    player.first -= 1;
+    player.second += 1;
+}
+
+void Robots::movePlayerSW() {
+    player.first += 1;
+    player.second += 1;
+}
+
+
+/*
+    if(movement.compare("e") || movement.compare("Ne") || movement.compare("se")) {
+        //player.first += 1;
     }
-    if(movement.compare("w") || movement.compare("nw") || movement.compare("sw")) {
-        player.first -= 1;
+    if(movement.compare("w") || movement.compare("Nw") || movement.compare("sw")) {
+        //player.first -= 1;
     }
     if(movement.compare("s") || movement.compare("sw") || movement.compare("se")) {
-        player.second += 1;
+        //player.second += 1;
     }
-    if(movement.compare("n") || movement.compare("nw") || movement.compare("ne")) {
-        player.second -= 1;
-    }
+
     else {
         player.first += 0;
     }
@@ -65,6 +100,7 @@ void Robots::movePlayer(std::string movement) {
         player.second -= 1;
     }
 }
+
 
 /**
  * @brief Robots::moveRobots based on where the player moved
