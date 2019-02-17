@@ -41,7 +41,21 @@ public:
      * @brief movePlayer moves player based on input "n, s, e, w, ne, nw, se, sw, *"
      * @param movement direction
      */
-    void movePlayer(std::string movement);
+    void movePlayerN();
+
+    void movePlayerS();
+
+    void movePlayerE();
+
+    void movePlayerW();
+
+    void movePlayerNE();
+
+    void movePlayerNW();
+
+    void movePlayerSE();
+
+    void movePlayerSW();
 
     /**
      * @brief moveRobots based on where the player moved
