@@ -43,7 +43,7 @@
      Robots r1;
      std::pair<int, int> x;
 
-     r1.movePlayer("n");
+     //r1.movePlayer("n");
      x.first = 3;
      r1.movePlayerN();
      x.first = 1;
@@ -115,7 +115,6 @@
 
      r1.movePlayerNW();
      x.first = 2;
->>>>>>> 265f09df1b41c1ddfea3c22ce1894ecd5942207a
      x.second = 1;
 
      ASSERT_EQ(r1.player, x);
@@ -147,6 +146,123 @@
      ASSERT_EQ(r1.player, x);
  }
 
+ TEST(general, TESTRIGHTWORM)
+ {
+     Worm w(17);
+     w.right();
+     std::pair<int, int> s1;
+     std::pair<int, int> s2;
+     std::vector<std::pair<int, int>> truth;
+     s1.first = 2;
+     s1.second = 3;
+     s2.first = 2;
+     s2.second = 2;
+     truth.push_back(s1);
+     truth.push_back(s2);
+     ASSERT_EQ(w.get_worm(), truth);
+ }
+
+ TEST(general, TESTDOWNWORM)
+ {
+     Worm w(17);
+     w.down();
+     std::pair<int, int> s1;
+     std::pair<int, int> s2;
+     std::vector<std::pair<int, int>> truth;
+     s1.first = 3;
+     s1.second = 2;
+     s2.first = 2;
+     s2.second = 2;
+     truth.push_back(s1);
+     truth.push_back(s2);
+     ASSERT_EQ(w.get_worm(), truth);
+ }
+
+ TEST(general, TESTUPWORM)
+ {
+     Worm w(17);
+     w.up();
+     std::pair<int, int> s1;
+     std::pair<int, int> s2;
+     std::vector<std::pair<int, int>> truth;
+     s1.first = 1;
+     s1.second = 2;
+     s2.first = 2;
+     s2.second = 2;
+     truth.push_back(s1);
+     truth.push_back(s2);
+     ASSERT_EQ(w.get_worm(), truth);
+ }
+
+ TEST(general, TESTINTOBODYWORM)
+ {
+     Worm w(17);
+     w.left();
+     ASSERT_EQ(w.lost_yet, true);
+ }
+
+ TEST(general, TESTLEFTWORM)
+ {
+     Worm w(17);
+     w.down();
+     w.left();
+     std::pair<int, int> s1;
+     std::pair<int, int> s2;
+     std::vector<std::pair<int, int>> truth;
+     s1.first = 3;
+     s1.second = 1;
+     s2.first = 3;
+     s2.second = 2;
+     truth.push_back(s1);
+     truth.push_back(s2);
+     ASSERT_EQ(w.get_worm(), truth);
+ }
+
+ TEST(general, TESTSCOREWORM)
+ {
+     Worm w(17);
+     w.up();
+     w.left();
+     ASSERT_EQ(w.score, 1);
+ }
+
+ TEST(general, TESTGETWORM)
+ {
+     Worm w(17);
+     char c = w.get(0, 0);
+     ASSERT_EQ(c, '*');
+ }
+
+ TEST(general, TESTINSERTWORM)
+ {
+     Worm w(17);
+     w.insert(1, 2, 'c');
+     char c = w.get(1, 2);
+     ASSERT_EQ(c, 'c');
+ }
+
+ TEST(general, TESTREMOVEWORM)
+ {
+     Worm w(17);
+     w.insert(1, 2, 'c');
+     w.remove(1, 2);
+     char c = w.get(1, 2);
+     ASSERT_EQ(c, ' ');
+ }
+ TEST(general, TESTGETWORMWORM)
+ {
+     Worm w(17);
+     std::pair<int, int> s1;
+     std::pair<int, int> s2;
+     std::vector<std::pair<int, int>> truth;
+     s1.first = 2;
+     s1.second = 2;
+     s2.first = 2;
+     s2.second = 1;
+     truth.push_back(s1);
+     truth.push_back(s2);
+     ASSERT_EQ(w.get_worm(), truth);
+ }
 
  int main(int argc, char **argv) {
 
