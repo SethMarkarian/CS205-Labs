@@ -45,31 +45,15 @@
  TEST(general, TESTSIMPLE) {
 
      /** replace with your own **/
-     Configuration s1;
-     Configuration s2("test");
-     ASSERT_EQ(s1.get_filename(), s2.get_filename()) << s1.get_filename()
-                                                     << " and "
-                                                     << s2.get_filename()
-                                                     << " should match!";
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayer("n");
+     x.first = 2;
+     x.second = 2;
+
+     ASSERT_EQ(r1.player, x);
  }
-
- TEST(general, TESTSIMPLE2) {
-
-     /** replace with your own s1.get_filename() **/
-     Configuration s1;
-     Configuration s2("test");
-     ASSERT_EQ("hello", s2.get_filename()) << s1.get_filename()
-                                                     << " and "
-                                                     << s2.get_filename()
-                                                     << " should match!";
- }
-
- TEST_F(FooTest, TESTFIXTURE) {
-
-     /** replace with your own **/
-     ASSERT_EQ(s1.get_filename(), s2.get_filename()) << "These should match!";
- }
-
  int main(int argc, char **argv) {
 
      ::testing::InitGoogleTest(&argc, argv);

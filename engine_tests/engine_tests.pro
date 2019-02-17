@@ -19,7 +19,7 @@ INCLUDEPATH +=  ../gtest                                   \
 HEADERS += ../Engines/robots.h
 SOURCES += ../Engines/robots.cpp
 
-HEADERS += ../Engines/worms.h
-SOURCES += ../Engines/worms.cpp
+HEADERS += ../Engines/worm.h
+SOURCES += ../Engines/worm.cpp
 
 ### add any other source or header files you may need
