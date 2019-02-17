@@ -5,3 +5,21 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp
+
+# if you have pthread errors, comment/uncomment the next line
+LIBS += -pthread
+
+SOURCES += ../gtest/googletest/src/gtest-all.cc
+
+INCLUDEPATH +=  ../gtest                                   \
+                ../gtest/googletest                        \
+                ../gtest/googletest/include                \
+                ../gtest/googletest/include/gtest
+
+HEADERS += ../Engines/robots.h
+SOURCES += ../Engines/robots.cpp
+
+HEADERS += ../Engines/worms.h
+SOURCES += ../Engines/worms.cpp
+
+### add any other source or header files you may need
