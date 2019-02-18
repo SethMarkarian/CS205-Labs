@@ -39,7 +39,7 @@ Robots::~Robots() {
 }
 
 /**
- * @brief Robots::movePlayer moves player based on input "n, s, e, w, ne, nw, se, sw, *"
+ * @brief Robots::movePlayer moves player
  * @param movement direction
  */
 void Robots::movePlayerN() {
@@ -77,30 +77,6 @@ void Robots::movePlayerSW() {
     player.first += 1;
     player.second += 1;
 }
-
-
-/*
-    if(movement.compare("e") || movement.compare("Ne") || movement.compare("se")) {
-        //player.first += 1;
-    }
-    if(movement.compare("w") || movement.compare("Nw") || movement.compare("sw")) {
-        //player.first -= 1;
-    }
-    if(movement.compare("s") || movement.compare("sw") || movement.compare("se")) {
-        //player.second += 1;
-    }
-
-    else {
-        player.first += 0;
-    }
-    if(player.first == COLS) {
-        player.first -= 1;
-    }
-    if(player.second == ROWS) {
-        player.second -= 1;
-    }
-}
-
 
 /**
  * @brief Robots::moveRobots based on where the player moved

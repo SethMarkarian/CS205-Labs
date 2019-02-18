@@ -146,6 +146,80 @@
      ASSERT_EQ(r1.player, x);
  }
 
+ TEST(general, TESTROBOTMOVEMENT1) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerN();
+     r1.moveRobots();
+     x.first = 1;
+     x.second = 2;
+
+     ASSERT_EQ(r1.robots[0], x);
+ }
+
+ TEST(general, TESTROBOTMOVEMENT2) {
+
+     /** replace with your own **/
+     Robots r1;
+     std::pair<int, int> x;
+
+     r1.movePlayerN();
+     r1.moveRobots();
+     x.first = 1;
+     x.second = 2;
+
+     ASSERT_EQ(r1.robots[1], x);
+ }
+
+ TEST(general, TESTRANDOMTELEPORT) {
+
+     /** replace with your own **/
+     Robots r1;
+     Robots r2;
+
+     r1.randomTeleport();
+     r2.randomTeleport();
+
+     bool isAns = r1.player != r2.player;
+
+     ASSERT_EQ(isAns, true);
+ }
+
+ TEST(general, TESTROBOTCOLLISIONS) {
+
+     /** replace with your own **/
+     Robots r1;
+
+     r1.movePlayerN();
+     r1.moveRobots();
+     bool isAns = r1.isDead();
+
+     ASSERT_EQ(isAns, true);
+
+}
+
+ TEST(general, TESTROBOTWIN) {
+
+     /** replace with your own **/
+     Robots r1;
+
+     r1.robots[0].first = -1;
+     r1.robots[0].second = -1;
+     r1.robots[1].first = -1;
+     r1.robots[1].second = -1;
+     r1.robots[2].first = -1;
+     r1.robots[2].second = -1;
+
+     bool isAns = r1.win();
+
+     ASSERT_EQ(isAns, true);
+
+}
+
+
  TEST(general, TESTRIGHTWORM)
  {
      Worm w(17);

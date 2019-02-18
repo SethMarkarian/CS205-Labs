@@ -6,6 +6,11 @@
 
 class Robots
 {
+    /**
+     * @brief updateBoard moves pieces on the board after methods have been called
+     */
+    void updateBoard();
+
 public:
     /**
      * @brief gameboard
@@ -79,10 +84,7 @@ public:
      */
     bool win();
 
-    /**
-     * @brief updateBoard moves pieces on the board after methods have been called
-     */
-    void updateBoard();
+
 
 };
 
