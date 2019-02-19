@@ -5,4 +5,5 @@ SUBDIRS += \
     unittest \
     Engines \
     engine_tests \
-    ncurses_example
+    ncurses_example \
+    tui
