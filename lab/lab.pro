@@ -6,8 +6,11 @@ CONFIG -= qt
 SOURCES += \
         main.cpp \
     log.cpp \
-    configuration.cpp
+    configuration.cpp \
+    baseclass.cpp
 
 HEADERS += \
     log.h \
-    configuration.h
+    configuration.h \
+    baseclass.h \
+    macro.h

@@ -3,8 +3,9 @@
 #define ROWS 5
 #define COLS 3
 #include <iostream>
+#include "engine.h"
 
-class Robots
+class Robots : public engine
 {
     /**
      * @brief updateBoard moves pieces on the board after methods have been called

@@ -9,6 +9,7 @@
 #include <map>
 #include <functional>
 #include <thread>
+#include "engine.h"
 //! The header file for the worm class
 //! The worm class manages operations for a worm game
 //! This is not an actual game
@@ -19,7 +20,7 @@
  * and determine if the user has won or lost yet
  */
 
-class Worm
+class Worm : public engine
 {
     //! Instance variables
     char gameboard [ROWS][COLS]; // array representing game board
