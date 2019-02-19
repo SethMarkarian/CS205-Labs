@@ -1,5 +1,7 @@
 ﻿#include "worm.h"
 
+Worm::Worm(){}
+
 Worm::Worm(int s)
 {
     //! set instance variables

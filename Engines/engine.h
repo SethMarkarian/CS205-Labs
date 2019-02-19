@@ -10,6 +10,7 @@ protected:
     char ** gameboard; // who knows how to use this??
 public:
     engine(int r, int c);
+    engine();
     ~engine();
 };
 

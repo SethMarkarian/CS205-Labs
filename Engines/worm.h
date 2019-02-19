@@ -64,6 +64,7 @@ public:
     bool won_yet; // true if won, false if have not won yet
     bool lost_yet; // true if lost, false if have not lost yet
     int score; // score of the player
+    Worm();
     /*!
      * \brief Worm constructor
      * \param s the random number seed
