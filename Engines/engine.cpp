@@ -10,3 +10,7 @@ engine::engine(int r, int c)
     rows = r;
     cols = c;
 }
+
+engine::~engine() {
+
+}
