@@ -1,8 +1,6 @@
 ﻿#include "worm.h"
 
-Worm::Worm(){}
-
-Worm::Worm(int s)
+Worm::Worm() : engine(5, 5)
 {
     //! set instance variables
     //! these are preset so that the developer does not make an impossible setup
@@ -19,7 +17,29 @@ Worm::Worm(int s)
     dir.second = 0;
     won_yet = false;
     lost_yet = false;
-    srand(s);
+    srand(17);
+    //! set up gameboard
+    place();
+}
+
+Worm::Worm(int r, int c) : engine (r, c)
+{
+    //! set instance variables
+    //! these are preset so that the developer does not make an impossible setup
+    score = 0;
+    biq = 0;
+    len = 1;
+    edge = '*';
+    empt = ' ';
+    body = 'o';
+    head = '@';
+    hs.first = 3;
+    hs.second = 3;
+    dir.first = 1;
+    dir.second = 0;
+    won_yet = false;
+    lost_yet = false;
+    srand(17);
     //! set up gameboard
     place();
 }
@@ -27,12 +47,12 @@ Worm::Worm(int s)
 void Worm::place()
 {
     //! loop through each row, column location
-    for(int i = 0; i < ROWS; i++)
+    for(int i = 0; i < rows; i++)
     {
         gameboard[i][0] = edge; //! the left and right column of each row is a edge
-        for(int j = 1; j < COLS - 1; j++)
+        for(int j = 1; j < cols - 1; j++)
         {
-            if(i == 0 || i == ROWS - 1)
+            if(i == 0 || i == rows - 1)
             {
                 gameboard[i][j] = edge; //! assign an edge character
             }
@@ -41,7 +61,7 @@ void Worm::place()
                 insert(i, j, empt); //! assign an empty character
             }
         }
-        gameboard[i][COLS - 1] = edge; //! assign to an edge character
+        gameboard[i][cols - 1] = edge; //! assign to an edge character
     }
     insert(hs.first, hs.second, head); //! insert the head on the gameboard
     segments.push_back(hs); //! insert the head on the segments vector
@@ -60,7 +80,7 @@ char Worm::insert(int row, int col, char c)
 {
     if(gameboard[row][col] == empt) //! if the location is an empty space
     {
-        int key = (row - 1) * ROWS + col;
+        int key = (row - 1) * rows + col;
         blanks.erase(key); //! erase this location from blanks map
         gameboard[row][col] = c; //! set row, column to c
         return empt;
@@ -173,7 +193,7 @@ void Worm::place_points()
 
 void Worm::insert_blank(int row, int col)
 {
-    int key = (row - 1) * ROWS + col; //! key value based on the location in the gameboard
+    int key = (row - 1) * rows + col; //! key value based on the location in the gameboard
     std::pair<int, int> value; //! value is the location on the board
     value.first = row;
     value.second = col;

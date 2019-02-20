@@ -6,6 +6,7 @@ CONFIG -= qt
 SOURCES += \
         main.cpp \
     screen.cpp
+LIBS    += -lncurses
 
 HEADERS += \
     screen.h

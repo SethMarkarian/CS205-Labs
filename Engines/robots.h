@@ -7,10 +7,6 @@
 
 class Robots : public engine
 {
-    /**
-     * @brief updateBoard moves pieces on the board after methods have been called
-     */
-    void updateBoard();
 
 public:
     /**
@@ -36,7 +32,7 @@ public:
     /**
      * @brief Robots constructor, random positions
      */
-    Robots(std::string s);
+    Robots(int r, int c);
 
     /**
       * @brief ~Robots destructor
@@ -85,6 +81,10 @@ public:
      */
     bool win();
 
+    /**
+     * @brief updateBoard moves pieces on the board after methods have been called
+     */
+    void updateBoard();
 
 
 };

@@ -222,7 +222,7 @@
 
  TEST(general, TESTRIGHTWORM)
  {
-     Worm w(17);
+     Worm w;
      w.right();
      std::pair<int, int> s1;
      std::pair<int, int> s2;
@@ -238,7 +238,7 @@
 
  TEST(general, TESTDOWNWORM)
  {
-     Worm w(17);
+     Worm w;
      w.down();
      std::pair<int, int> s1;
      std::pair<int, int> s2;
@@ -254,7 +254,7 @@
 
  TEST(general, TESTUPWORM)
  {
-     Worm w(17);
+     Worm w;
      w.up();
      std::pair<int, int> s1;
      std::pair<int, int> s2;
@@ -270,14 +270,14 @@
 
  TEST(general, TESTINTOBODYWORM)
  {
-     Worm w(17);
+     Worm w;
      w.left();
      ASSERT_EQ(w.lost_yet, true);
  }
 
  TEST(general, TESTLEFTWORM)
  {
-     Worm w(17);
+     Worm w;
      w.down();
      w.left();
      std::pair<int, int> s1;
@@ -294,7 +294,7 @@
 
  TEST(general, TESTSCOREWORM)
  {
-     Worm w(17);
+     Worm w;
      w.up();
      w.left();
      ASSERT_EQ(w.score, 1);
@@ -302,14 +302,14 @@
 
  TEST(general, TESTGETWORM)
  {
-     Worm w(17);
+     Worm w;
      char c = w.get(0, 0);
      ASSERT_EQ(c, '*');
  }
 
  TEST(general, TESTINSERTWORM)
  {
-     Worm w(17);
+     Worm w;
      w.insert(1, 2, 'c');
      char c = w.get(1, 2);
      ASSERT_EQ(c, 'c');
@@ -317,7 +317,7 @@
 
  TEST(general, TESTREMOVEWORM)
  {
-     Worm w(17);
+     Worm w;
      w.insert(1, 2, 'c');
      w.remove(1, 2);
      char c = w.get(1, 2);
@@ -325,7 +325,7 @@
  }
  TEST(general, TESTGETWORMWORM)
  {
-     Worm w(17);
+     Worm w;
      std::pair<int, int> s1;
      std::pair<int, int> s2;
      std::vector<std::pair<int, int>> truth;

@@ -3,7 +3,7 @@
 /**
  * @brief Robots::Robots constructor, hard coded positions (TESTING ONLY)
  */
-Robots::Robots()
+Robots::Robots() : engine(5, 3)
 {
     robots[0].first = 2;
     robots[0].second = 3;
@@ -19,16 +19,15 @@ Robots::Robots()
  * @brief Robots::Robots constructor, random positions
  * @param s distingues the two constructors
  */
-Robots::Robots(std::string s) {
-    std::string t = s;
-    robots[0].first = rand() % COLS;
-    robots[0].second = rand() % ROWS;
-    robots[1].first = rand() % COLS;
-    robots[1].second = rand() % ROWS;
-    robots[2].first = rand() % COLS;
-    robots[2].second = rand() % ROWS;
-    player.first = rand() % COLS;
-    player.second = rand() % ROWS;
+Robots::Robots(int r, int c) : engine(r, c){
+    robots[0].first = rand() % cols;
+    robots[0].second = rand() % rows;
+    robots[1].first = rand() % cols;
+    robots[1].second = rand() % rows;
+    robots[2].first = rand() % cols;
+    robots[2].second = rand() % rows;
+    player.first = rand() % cols;
+    player.second = rand() % rows;
 }
 
 /**
@@ -96,10 +95,10 @@ void Robots::moveRobots() {
         if(player.second < robots[i].second) {
             robots[i].second -= 1;
         }
-        if(robots[i].first == COLS) {
+        if(robots[i].first == rows) {
             robots[i].first -= 1;
         }
-        if(robots[i].second == ROWS) {
+        if(robots[i].second == cols) {
             robots[i].second -= 1;
         }
     }
@@ -109,8 +108,8 @@ void Robots::moveRobots() {
  * @brief Robots::randomTeleport teleports player to a random position on the grid
  */
 void Robots::randomTeleport() {
-    player.first = rand() % COLS;
-    player.second = rand() % ROWS;
+    player.first = rand() % cols;
+    player.second = rand() % rows;
 }
 
 /**

@@ -1,9 +1,9 @@
 #include <iostream>
-
-using namespace std;
+#include "screen.h"
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Screen s;
+    s.run();
     return 0;
 }
