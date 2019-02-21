@@ -2,8 +2,10 @@
 
 WormsTUI::WormsTUI()
 {
-
-
+    r = 20;
+    c = 20;
+    key_presses = 0;
+    // wurm(10, 10);
 }
 
 void WormsTUI::draw_screen()
@@ -14,16 +16,42 @@ void WormsTUI::draw_screen()
 
     // clear screen return cursor to (0,0)
     clear();
+    int p = 0;
 
-    // print the state of the value object
-    mvprintw(2, 4, "This is a generic Screen: ");
-    display = "Hello World!";
-    mvprintw(3, 21, display.c_str());
+    mvprintw(p++, 4, "Instructions: ");
+    mvprintw(p++, 4, "Right arrow: worm goes right");
+    mvprintw(p++, 4, "Left arrow: worm goes left");
+    mvprintw(p++, 4, "Up arrow, worm goes up");
+    mvprintw(p++, 4, "Down arrow, worm goes down");
+    mvprintw(p++, 4, "q: game quits");
+    int i = 0;
+    for(; i < r; i ++)
+    {
+        std::string disp;
+        for(int j = 0; j < c; j++)
+        {
+            disp += wurm.get(i, j);
+        }
+        mvprintw(p++, 0, disp.c_str());
+    }
 
+    mvprintw(p++, 4, "Key presses!");
+    std::string k_p = std::to_string(key_presses);
+    mvprintw(p++, 4, k_p.c_str());
     // print the instructions for manipulating the Value object
-    mvprintw(5, 4, "Instructions should go here!");
-    mvprintw(6, 4, "This is at 6, 4");
-    mvprintw(7, 8, "Click right arrow to quit");
+    mvprintw(p++, 4, "Have you lost/ won yet?");
+    if(wurm.won_yet)
+    {
+        mvprintw(p++, 4, "You have won!");
+    }
+    else if(wurm.lost_yet)
+    {
+        mvprintw(p++, 4, "You have lost!");
+    }
+    else
+    {
+        mvprintw(p++, 4, "Still playing!");
+    }
 }
 
 void WormsTUI::run()
@@ -59,6 +87,7 @@ void WormsTUI::run()
 
             // draw the new screen
             refresh();
+            draw_screen();
 
             // obtain character from keyboard
             int ch = getch();
@@ -66,12 +95,22 @@ void WormsTUI::run()
             // operate based on input character
             switch (ch) {
             case KEY_DOWN:
+                wurm.down();
+                key_presses++;
                 break;
             case KEY_UP:
+                wurm.up();
+                key_presses++;
                 break;
             case KEY_LEFT:
+                wurm.left();
+                key_presses++;
                 break;
             case KEY_RIGHT:
+                wurm.right();
+                key_presses++;
+                break;
+            case 'q':
                 continue_looping = false;
                 break;
 

@@ -1,9 +1,10 @@
 #include <iostream>
 #include "screen.h"
+#include "wormstui.h"
 
 int main()
 {
-    Screen s;
-    s.run();
+    WormsTUI w;
+    w.run();
     return 0;
 }

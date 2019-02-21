@@ -23,7 +23,7 @@
 class Worm : public engine
 {
     //! Instance variables
-    char gameboard [ROWS][COLS]; // array representing game board
+    // char gameboard [ROWS][COLS]; // array representing game board
     int biq; // stands for body (segments, o's) in queue
     int len; // the number of o's in the worm's body
     char edge; // the character around the edges

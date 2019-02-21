@@ -1,6 +1,6 @@
 ﻿#include "worm.h"
 
-Worm::Worm() : engine(5, 5)
+Worm::Worm() : engine(20, 20)
 {
     //! set instance variables
     //! these are preset so that the developer does not make an impossible setup
@@ -11,10 +11,10 @@ Worm::Worm() : engine(5, 5)
     empt = ' ';
     body = 'o';
     head = '@';
-    hs.first = 3;
-    hs.second = 3;
-    dir.first = 1;
-    dir.second = 0;
+    hs.first = 2;
+    hs.second = 2;
+    dir.first = 0;
+    dir.second = 1;
     won_yet = false;
     lost_yet = false;
     srand(17);
@@ -35,8 +35,8 @@ Worm::Worm(int r, int c) : engine (r, c)
     head = '@';
     hs.first = 3;
     hs.second = 3;
-    dir.first = 1;
-    dir.second = 0;
+    dir.first = 0;
+    dir.second = 1;
     won_yet = false;
     lost_yet = false;
     srand(17);
@@ -65,11 +65,11 @@ void Worm::place()
     }
     insert(hs.first, hs.second, head); //! insert the head on the gameboard
     segments.push_back(hs); //! insert the head on the segments vector
-    for(int i = 0; i < len; i++) //! builds up the worm from the head to the tail
+    for(int i = 1; i <= len; i++) //! builds up the worm from the head to the tail
     {
         std::pair<int, int> p_i; //! stands for pair i
-        p_i.first = hs.first + i * dir.first * -1; //! coordinates of next segment based on direction
-        p_i.second = hs.second + i * dir.second * -1;
+        p_i.first = hs.first - i * dir.first; //! coordinates of next segment based on direction
+        p_i.second = hs.second - i * dir.second;
         segments.push_back(p_i); //! add segments to vector
         insert(p_i.first, p_i.second, body); //! insert onto gameboard
     }
@@ -141,7 +141,7 @@ void Worm::procession()
 void Worm::up()
 {
     //! changes direction to up then calls procession
-    dir.first = 1;
+    dir.first = -1;
     dir.second = 0;
     procession();
 }
@@ -157,7 +157,7 @@ void Worm::left()
 void Worm::down()
 {
     //! changes direction to down then calls procession
-    dir.first = -1;
+    dir.first = 1;
     dir.second = 0;
     procession();
 }
