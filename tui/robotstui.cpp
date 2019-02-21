@@ -2,11 +2,24 @@
 
 RobotsTUI::RobotsTUI()
 {
-
+    //r(5,3);
 }
 
 void RobotsTUI::draw_screen() {
+    // temporary display string for storing the value
+    // of the displayed Value object.
 
+
+    // clear screen return cursor to (0,0)
+    clear();
+
+    for(int i = 0; i < r.getRows(); i++ ) {
+        std::string display;
+        for(int j = 0; j < r.getCols(); j++) {
+            display += r.gameboard[i][j];
+        }
+        mvprintw(i, 0, display.c_str());
+    }
 }
 
 void RobotsTUI::run() {
@@ -45,18 +58,31 @@ void RobotsTUI::run() {
         // obtain character from keyboard
         int ch = getch();
 
+        if(r.win()) {
+            continue_looping = false;
+        }
+        if(r.isDead()) {
+            continue_looping = false;
+        }
+        if(r.playerDead()) {
+            continue_looping = false;
+        }
         // operate based on input character
         switch (ch) {
         case KEY_DOWN:
+            r.movePlayerS();
             break;
         case KEY_UP:
+            r.movePlayerN();
             break;
         case KEY_LEFT:
+            r.movePlayerW();
             break;
         case KEY_RIGHT:
-            continue_looping = false;
+            r.movePlayerE();
             break;
-
+        case 'q':
+            continue_looping = false;
         }
     } while(continue_looping);
 
