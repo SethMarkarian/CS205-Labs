@@ -12,6 +12,7 @@ class RobotsTUI : public Screen
 
 protected:
     void draw_screen();
+
 public:
     RobotsTUI();
     void run();

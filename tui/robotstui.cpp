@@ -2,7 +2,7 @@
 
 RobotsTUI::RobotsTUI()
 {
-    //r(5,3);
+    //r = Robots(10,6);
 }
 
 void RobotsTUI::draw_screen() {

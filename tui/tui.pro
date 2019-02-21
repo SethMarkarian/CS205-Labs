@@ -7,6 +7,7 @@ SOURCES += \
         main.cpp \
     screen.cpp \
     wormstui.cpp \
+    robotstui.cpp \
     robotstui.cpp
 
 LIBS    += -lncurses
@@ -14,5 +15,6 @@ LIBS    += -lncurses
 HEADERS += \
     screen.h \
     wormstui.h \
+    robotstui.h \
     robotstui.h
 

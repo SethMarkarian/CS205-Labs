@@ -1,5 +1,6 @@
 #include <iostream>
 #include "screen.h"
+#include "robotstui.h"
 
 int main()
 {
