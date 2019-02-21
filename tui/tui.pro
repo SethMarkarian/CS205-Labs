@@ -5,8 +5,10 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    screen.cpp
+    screen.cpp \
+    wormstui.cpp
 LIBS    += -lncurses
 
 HEADERS += \
-    screen.h
+    screen.h \
+    wormstui.h
