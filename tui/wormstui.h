@@ -1,7 +1,7 @@
 #ifndef WORMSTUI_H
 #define WORMSTUI_H
 #include "screen.h"
-#include "worm.h"
+#include "../Engines/worm.h"
 
 class WormsTUI : public Screen
 {
