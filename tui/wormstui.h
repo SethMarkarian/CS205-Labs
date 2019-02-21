@@ -2,15 +2,10 @@
 #define WORMSTUI_H
 
 
-class WormsTUI : public QWidget
+class WormsTUI : public TUI
 {
-    Q_OBJECT
+
 public:
-    explicit WormsTUI(QWidget *parent = nullptr);
-
-signals:
-
-public slots:
 };
 
 #endif // WORMSTUI_H
