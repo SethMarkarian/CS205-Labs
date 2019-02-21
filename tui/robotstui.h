@@ -3,10 +3,13 @@
 
 #include "screen.h"
 #include "../Engines/robots.h"
+#include "../Engines/engine.h"
 
 
 class RobotsTUI : public Screen
 {
+    Robots r;
+
 protected:
     void draw_screen();
 public:

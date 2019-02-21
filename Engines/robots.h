@@ -1,7 +1,7 @@
 #ifndef ROBOTS_H
 #define ROBOTS_H
-#define ROWS 5
-#define COLS 3
+#define ROWS 10
+#define COLS 6
 #include <iostream>
 #include "engine.h"
 
@@ -85,6 +85,13 @@ public:
      * @brief updateBoard moves pieces on the board after methods have been called
      */
     void updateBoard();
+
+    int getRows();
+
+    int getCols();
+
+    bool playerDead();
+
 
 
 };

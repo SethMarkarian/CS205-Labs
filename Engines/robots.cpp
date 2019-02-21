@@ -3,16 +3,16 @@
 /**
  * @brief Robots::Robots constructor, hard coded positions (TESTING ONLY)
  */
-Robots::Robots() : engine(5, 3)
+Robots::Robots() : engine(10, 6)
 {
-    robots[0].first = 2;
-    robots[0].second = 3;
+    robots[0].first = 4;
+    robots[0].second = 6;
     robots[1].first = 0;
-    robots[1].second = 4;
-    robots[2].first = 5;
+    robots[1].second = 8;
+    robots[2].first = 10;
     robots[2].second = 0;
-    player.first = 1;
-    player.second = 2;
+    player.first = 2;
+    player.second = 4;
 }
 
 /**
@@ -118,14 +118,17 @@ void Robots::randomTeleport() {
  */
 bool Robots::isDead() {
     int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots - 1; i++) {
-        if((robots[i].first == robots[i + 1].first) && ((robots[i].second == robots[i + 1].second))) {
-            robots[i].first = -1;
-            robots[i].second = -1;
-            robots[i + 1].first = -1;
-            robots[i + 1].second = -1;
-            return true;
+    for(int i = 0; i < num_robots; i++) {
+        for(int j = i + 1; j < num_robots; j++) {
+            if((robots[i].first == robots[j].first) && ((robots[i].second == robots[j].second))) {
+                robots[i].first = -1;
+                robots[i].second = -1;
+                robots[i + 1].first = -1;
+                robots[i + 1].second = -1;
+                return true;
+            }
         }
+
     }
     return false;
 }
@@ -155,4 +158,22 @@ void Robots::updateBoard() {
         }
     }
     gameboard[player.first][player.second] = 'h';
+}
+
+int Robots::getRows() {
+   return rows;
+}
+
+int Robots::getCols() {
+    return cols;
+}
+
+bool Robots::playerDead() {
+    int num_robots = sizeof(robots);
+    for(int i = 0; i < num_robots - 1; i++) {
+        if((robots[i].first == player.first) && ((robots[i].second == player.second))) {
+            return true;
+        }
+    }
+    return false;
 }
