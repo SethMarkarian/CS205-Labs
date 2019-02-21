@@ -10,7 +10,6 @@ SOURCES += \
     ../Engines/worm.cpp \
     ../Engines/robots.cpp \
     wormstui.cpp \
-    robotstui.cpp \
     robotstui.cpp
 
 LIBS    += -lncurses
@@ -21,6 +20,5 @@ HEADERS += \
     ../Engines/worm.h \
     ../Engines/robots.h \
     wormstui.h \
-    robotstui.h \
     robotstui.h
 
