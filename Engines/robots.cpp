@@ -85,8 +85,7 @@ void Robots::movePlayerSW() {
  * @brief Robots::moveRobots based on where the player moved
  */
 void Robots::moveRobots() {
-    int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots; i++) {
+    for(int i = 0; i < 4; i++) {
         if(player.first > robots[i].first) {
             robots[i].first += 1;
         }
@@ -121,9 +120,8 @@ void Robots::randomTeleport() {
  * @return T if 2 robots collided, F if none collided
  */
 void Robots::isDead() {
-    int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots; i++) {
-        for(int j = i + 1; j < num_robots; j++) {
+    for(int i = 0; i < 4; i++) {
+        for(int j = i + 1; j < 4; j++) {
             if((robots[i].first == robots[j].first) && ((robots[i].second == robots[j].second))) {
                 robots[i].first = -1;
                 robots[i].second = -1;
@@ -140,8 +138,7 @@ void Robots::isDead() {
  * @return T if win or F is no win
  */
 bool Robots::win() {
-    int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots; i++) {
+    for(int i = 0; i < 4; i++) {
         if(robots[i].first != -1 || robots[i].second != -1) {
             return false;
         }
@@ -153,11 +150,8 @@ bool Robots::win() {
  * @brief Robots::updateBoard moves pieces on the board after methods have been called
  */
 void Robots::updateBoard() {
-    int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots; i++) {
-        if(robots[i].first != -1 && robots[i].second != -1) {
-            engine::gameboard[robots[i].first][robots[i].second] = 'r';
-        }
+    for(int i = 0; i < 4; i++) {
+        engine::gameboard[robots[i].first][robots[i].second] = 'r';
     }
     engine::gameboard[player.first][player.second] = 'h';
 }
@@ -171,8 +165,7 @@ int Robots::getCols() {
 }
 
 bool Robots::playerDead() {
-    int num_robots = sizeof(robots);
-    for(int i = 0; i < num_robots - 1; i++) {
+    for(int i = 0; i < 4; i++) {
         if((robots[i].first == player.first) && ((robots[i].second == player.second))) {
             return true;
         }
