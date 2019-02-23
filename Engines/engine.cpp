@@ -14,7 +14,7 @@ engine::engine()
     // Initialization
     for(int j = 0; j < rows; j++) {
         for(int i = 0; i < rows; i++) {
-            gameboard[i][j] = '_';
+            gameboard[i][j] = ' ';
         }
     }
 

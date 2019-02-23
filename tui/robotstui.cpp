@@ -21,7 +21,9 @@ void RobotsTUI::draw_screen() {
         for(int j = 0; j < r.getCols(); j++) {
             display += r.get(i, j);
         }
-        mvprintw(i, 0, display.c_str());
+        //mvprintw(i, 0, display.c_str());
+        printw(display.c_str());
+        move(i, 0);
     }
 }
 
@@ -51,6 +53,7 @@ void RobotsTUI::run() {
     bool continue_looping = true;
 
     // draw the current screen
+    refresh();
     draw_screen();
 
     do {
