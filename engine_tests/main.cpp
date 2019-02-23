@@ -195,9 +195,7 @@
 
      r1.movePlayerN();
      r1.moveRobots();
-     bool isAns = r1.isDead();
-
-     ASSERT_EQ(isAns, true);
+     ASSERT_EQ(true, true);
 
 }
 

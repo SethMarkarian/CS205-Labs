@@ -12,11 +12,14 @@ void RobotsTUI::draw_screen() {
 
     // clear screen return cursor to (0,0)
     clear();
+    r.isDead();
+    r.moveRobots();
+    r.updateBoard();
 
     for(int i = 0; i < r.getRows(); i++ ) {
         std::string display;
         for(int j = 0; j < r.getCols(); j++) {
-            display += r.gameboard[i][j];
+            display += r.get(i, j);
         }
         mvprintw(i, 0, display.c_str());
     }
@@ -54,14 +57,12 @@ void RobotsTUI::run() {
 
         // draw the new screen
         refresh();
+        draw_screen();
 
         // obtain character from keyboard
         int ch = getch();
 
         if(r.win()) {
-            continue_looping = false;
-        }
-        if(r.isDead()) {
             continue_looping = false;
         }
         if(r.playerDead()) {
@@ -81,8 +82,12 @@ void RobotsTUI::run() {
         case KEY_RIGHT:
             r.movePlayerE();
             break;
+        case '*':
+            r.randomTeleport();
+            break;
         case 'q':
             continue_looping = false;
+            break;
         }
     } while(continue_looping);
 

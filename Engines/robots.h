@@ -10,14 +10,9 @@ class Robots : public engine
 
 public:
     /**
-     * @brief gameboard
-     */
-    char gameboard[ROWS][COLS];
-
-    /**
      * @brief array of robot positions
      */
-    std::pair<int, int> robots[3];
+    std::pair<int, int> robots[4];
 
     /**
      * @brief player with position
@@ -71,9 +66,8 @@ public:
 
     /**
      * @brief isDead determines if 2 robots collided when moved
-     * @return T if 2 robots collided, F if none collided
      */
-    bool isDead();
+    void isDead();
 
     /**
      * @brief win
@@ -86,11 +80,14 @@ public:
      */
     void updateBoard();
 
+
     int getRows();
 
     int getCols();
 
     bool playerDead();
+
+    char get(int row, int col);
 
 
 

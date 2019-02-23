@@ -11,6 +11,8 @@ Robots::Robots() : engine(10, 6)
     robots[1].second = 8;
     robots[2].first = 10;
     robots[2].second = 0;
+    robots[3].first = 5;
+    robots[3].second = 0;
     player.first = 2;
     player.second = 4;
 }
@@ -26,6 +28,8 @@ Robots::Robots(int r, int c) : engine(r, c){
     robots[1].second = rand() % rows;
     robots[2].first = rand() % cols;
     robots[2].second = rand() % rows;
+    robots[3].first = rand() % cols;
+    robots[3].second = rand() % rows;
     player.first = rand() % cols;
     player.second = rand() % rows;
 }
@@ -116,21 +120,19 @@ void Robots::randomTeleport() {
  * @brief Robots::isDead determine if 2 robots collided when moved
  * @return T if 2 robots collided, F if none collided
  */
-bool Robots::isDead() {
+void Robots::isDead() {
     int num_robots = sizeof(robots);
     for(int i = 0; i < num_robots; i++) {
         for(int j = i + 1; j < num_robots; j++) {
             if((robots[i].first == robots[j].first) && ((robots[i].second == robots[j].second))) {
                 robots[i].first = -1;
                 robots[i].second = -1;
-                robots[i + 1].first = -1;
-                robots[i + 1].second = -1;
-                return true;
+                robots[j].first = -1;
+                robots[j].second = -1;
             }
         }
 
     }
-    return false;
 }
 
 /**
@@ -153,11 +155,11 @@ bool Robots::win() {
 void Robots::updateBoard() {
     int num_robots = sizeof(robots);
     for(int i = 0; i < num_robots; i++) {
-        if(robots[i].first != -1 || robots[i].second != -1) {
-            gameboard[robots[i].first][robots[i].second] = 'r';
+        if(robots[i].first != -1 && robots[i].second != -1) {
+            engine::gameboard[robots[i].first][robots[i].second] = 'r';
         }
     }
-    gameboard[player.first][player.second] = 'h';
+    engine::gameboard[player.first][player.second] = 'h';
 }
 
 int Robots::getRows() {
@@ -176,4 +178,8 @@ bool Robots::playerDead() {
         }
     }
     return false;
+}
+
+char Robots::get(int row, int col) {
+    return engine::gameboard[row][col];
 }

@@ -9,8 +9,6 @@
 class RobotsTUI : public Screen
 {
     Robots r;
-
-protected:
     void draw_screen();
 
 public:
