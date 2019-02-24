@@ -45,38 +45,46 @@ Robots::~Robots() {
  * @brief Robots::movePlayer moves player
  * @param movement direction
  */
-void Robots::movePlayerN() {
+void Robots::movePlayerW() {
+    engine::gameboard[player.first][player.second] = '_';
     player.second -= 1;
 }
 
-void Robots::movePlayerS() {
+void Robots::movePlayerE() {
+    engine::gameboard[player.first][player.second] = '_';
     player.second += 1;
 }
 
-void Robots::movePlayerE() {
+void Robots::movePlayerS() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first += 1;
 }
 
-void Robots::movePlayerW() {
+void Robots::movePlayerN() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first -= 1;
 }
 
 void Robots::movePlayerNE() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first -= 1;
     player.second -= 1;
 }
 
 void Robots::movePlayerNW() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first += 1;
     player.second -= 1;
 }
 
 void Robots::movePlayerSE() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first -= 1;
     player.second += 1;
 }
 
 void Robots::movePlayerSW() {
+    engine::gameboard[player.first][player.second] = '_';
     player.first += 1;
     player.second += 1;
 }
@@ -87,6 +95,7 @@ void Robots::movePlayerSW() {
 void Robots::moveRobots() {
     for(int i = 0; i < 4; i++) {
         if(robots[i].first != -1) {
+            //check position of robots
             if(player.first > robots[i].first) {
                 robots[i].first += 1;
             }
@@ -150,23 +159,47 @@ bool Robots::win() {
 }
 
 /**
+ * @brief Robots::clearGameBoard
+ */
+void Robots::clearGameBoard() {
+    for(int i = 0; i < getRows(); i++) {
+        for(int j = 0; j < getCols(); j++) {
+            engine::gameboard[i][j] = '_';
+        }
+    }
+}
+
+/**
  * @brief Robots::updateBoard moves pieces on the board after methods have been called
  */
 void Robots::updateBoard() {
+    clearGameBoard();
     for(int i = 0; i < 4; i++) {
         engine::gameboard[robots[i].first][robots[i].second] = 'r';
     }
     engine::gameboard[player.first][player.second] = 'h';
 }
 
+/**
+ * @brief Robots::getRows
+ * @return number of rows
+ */
 int Robots::getRows() {
    return rows;
 }
 
+/**
+ * @brief Robots::getCols
+ * @return number of columns
+ */
 int Robots::getCols() {
     return cols;
 }
 
+/**
+ * @brief Robots::playerDead
+ * @return state of player
+ */
 bool Robots::playerDead() {
     for(int i = 0; i < 4; i++) {
         if((robots[i].first == player.first) && ((robots[i].second == player.second))) {
@@ -176,6 +209,28 @@ bool Robots::playerDead() {
     return false;
 }
 
+/**
+ * @brief Robots::get
+ * @param row
+ * @param col
+ * @return char at that point
+ */
 char Robots::get(int row, int col) {
     return engine::gameboard[row][col];
+}
+
+/**
+ * @brief Robots::resetGame
+ */
+void Robots::resetGame() {
+    robots[0].first = 4;
+    robots[0].second = 6;
+    robots[1].first = 0;
+    robots[1].second = 8;
+    robots[2].first = 10;
+    robots[2].second = 0;
+    robots[3].first = 5;
+    robots[3].second = 0;
+    player.first = 2;
+    player.second = 4;
 }

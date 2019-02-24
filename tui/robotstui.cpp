@@ -19,6 +19,7 @@ void RobotsTUI::draw_screen() {
     r.moveRobots();
     r.updateBoard();
 
+    //print line by line the current board
     for(int i = 0; i < r.getRows(); i++ ) {
         std::string display;
         for(int j = 0; j < r.getCols(); j++) {
@@ -69,27 +70,40 @@ void RobotsTUI::run() {
         int ch = getch();
 
         // operate based on input character
-        switch (ch) {
-        case KEY_RIGHT:
-            r.movePlayerS();
-            break;
-        case KEY_LEFT:
-            r.movePlayerN();
-            break;
-        case KEY_UP:
-            r.movePlayerW();
-            break;
-        case KEY_DOWN:
-            r.movePlayerE();
-            break;
-        case '*':
-            r.randomTeleport();
-            break;
-        case 'q':
-            continue_looping = false;
-            break;
+        if(!r.win() && !r.playerDead()) {
+            switch (ch) {
+            case KEY_RIGHT: //move right
+                r.movePlayerE();
+                break;
+            case KEY_LEFT: //move left
+                r.movePlayerW();
+                break;
+            case KEY_UP: //move up
+                r.movePlayerN();
+                break;
+            case KEY_DOWN: //move down
+                r.movePlayerS();
+                break;
+            case '*': //random teleport
+                r.randomTeleport();
+                break;
+            case 'q': //quit
+                continue_looping = false;
+                break;
+            }
+            r.moveRobots();
         }
-        r.moveRobots();
+        //game is over and want to refesh
+        else {
+            switch(ch) {
+            case 'q':
+                continue_looping = false;
+                break;
+            case 'p':
+                r.resetGame();
+                break;
+        }
+        }
     } while(continue_looping);
 
         // cleanup the window and return control to bash

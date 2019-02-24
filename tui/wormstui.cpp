@@ -2,10 +2,10 @@
 
 WormsTUI::WormsTUI()
 {
+    // initializes instance variables
     r = 20;
     c = 20;
     key_presses = 0;
-    // wurm(10, 10);
 }
 
 void WormsTUI::draw_screen()
@@ -16,8 +16,8 @@ void WormsTUI::draw_screen()
 
     // clear screen return cursor to (0,0)
     clear();
-    int p = 0;
-
+    int p = 0; // this is the row to be printed on
+    // instructions
     mvprintw(p++, 4, "Instructions: ");
     mvprintw(p++, 4, "Right arrow: worm goes right");
     mvprintw(p++, 4, "Left arrow: worm goes left");
@@ -25,6 +25,7 @@ void WormsTUI::draw_screen()
     mvprintw(p++, 4, "Down arrow, worm goes down");
     mvprintw(p++, 4, "q: game quits");
     mvprintw(p++, 4, "if won or lost, press q to quit or p to play again");
+    // prints each row of the game board
     int i = 0;
     for(; i < r; i ++)
     {
@@ -35,11 +36,10 @@ void WormsTUI::draw_screen()
         }
         mvprintw(p++, 0, disp.c_str());
     }
-
+    // other information useful to user
     mvprintw(p++, 4, "Key presses!");
     std::string k_p = std::to_string(key_presses);
     mvprintw(p++, 4, k_p.c_str());
-    // print the instructions for manipulating the Value object
     mvprintw(p++, 4, "Have you lost/ won yet?");
     if(wurm.won_yet)
     {
@@ -92,7 +92,7 @@ void WormsTUI::run()
 
             // obtain character from keyboard
             int ch = getch();
-            if(!wurm.lost_yet && !wurm.won_yet)
+            if(!wurm.lost_yet && !wurm.won_yet) // if the user has not won or lost yet, continue playing
             {
                 // operate based on input character
                 switch (ch) {
@@ -117,7 +117,7 @@ void WormsTUI::run()
                     break;
                 }
             }
-            else {
+            else { // if the user has won or lost, either quit or play other game
                 switch(ch)
                 {
                 case 'q':

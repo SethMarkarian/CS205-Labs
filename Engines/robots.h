@@ -12,6 +12,7 @@ public:
     /**
      * @brief array of robot positions
      */
+
     std::pair<int, int> robots[4];
 
     /**
@@ -80,14 +81,41 @@ public:
      */
     void updateBoard();
 
-
+    /**
+     * @brief getRows
+     * @return number of rows
+     */
     int getRows();
 
+    /**
+     * @brief getCols
+     * @return number of columns
+     */
     int getCols();
 
+    /**
+     * @brief playerDead
+     * @return state of player
+     */
     bool playerDead();
 
+    /**
+     * @brief get
+     * @param row num rows
+     * @param col num cols
+     * @return character at that point
+     */
     char get(int row, int col);
+
+    /**
+     * @brief clearGameBoard
+     */
+    void clearGameBoard();
+
+    /**
+     * @brief resetGame
+     */
+    void resetGame();
 
 
 
