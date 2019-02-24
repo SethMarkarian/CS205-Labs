@@ -46,6 +46,23 @@ Worm::Worm(int r, int c) : engine (r, c)
 
 void Worm::place()
 {
+    //! set instance variables
+    //! these are preset so that the developer does not make an impossible setup
+    score = 0;
+    biq = 0;
+    len = 1;
+    edge = '*';
+    empt = ' ';
+    body = 'o';
+    head = '@';
+    hs.first = 3;
+    hs.second = 3;
+    dir.first = 0;
+    dir.second = 1;
+    won_yet = false;
+    lost_yet = false;
+    srand(17);
+    segments.clear();
     //! loop through each row, column location
     for(int i = 0; i < rows; i++)
     {

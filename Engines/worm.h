@@ -35,10 +35,7 @@ class Worm : public engine
     std::vector<std::pair<int, int>> segments; // vector of segments of worm
     std::map<int, std::pair<int, int>> blanks; // map of blank spacecs on board
 
-    /*!
-     * \brief place lays out the game board
-     */
-    void place();
+
     /*!
      * \brief procession moves the worm based on the current direction
      */
@@ -109,6 +106,10 @@ public:
      * \brief right move the worm right
      */
     void right();
+    /*!
+     * \brief place lays out the game board
+     */
+    void place();
     std::vector<std::pair<int, int>> get_worm();
 };
 

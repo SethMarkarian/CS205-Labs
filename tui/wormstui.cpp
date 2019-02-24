@@ -24,6 +24,7 @@ void WormsTUI::draw_screen()
     mvprintw(p++, 4, "Up arrow, worm goes up");
     mvprintw(p++, 4, "Down arrow, worm goes down");
     mvprintw(p++, 4, "q: game quits");
+    mvprintw(p++, 4, "if won or lost, press q to quit or p to play again");
     int i = 0;
     for(; i < r; i ++)
     {
@@ -91,29 +92,42 @@ void WormsTUI::run()
 
             // obtain character from keyboard
             int ch = getch();
-
-            // operate based on input character
-            switch (ch) {
-            case KEY_DOWN:
-                wurm.down();
-                key_presses++;
-                break;
-            case KEY_UP:
-                wurm.up();
-                key_presses++;
-                break;
-            case KEY_LEFT:
-                wurm.left();
-                key_presses++;
-                break;
-            case KEY_RIGHT:
-                wurm.right();
-                key_presses++;
-                break;
-            case 'q':
-                continue_looping = false;
-                break;
-
+            if(!wurm.lost_yet && !wurm.won_yet)
+            {
+                // operate based on input character
+                switch (ch) {
+                case KEY_DOWN:
+                    wurm.down();
+                    key_presses++;
+                    break;
+                case KEY_UP:
+                    wurm.up();
+                    key_presses++;
+                    break;
+                case KEY_LEFT:
+                    wurm.left();
+                    key_presses++;
+                    break;
+                case KEY_RIGHT:
+                    wurm.right();
+                    key_presses++;
+                    break;
+                case 'q':
+                    continue_looping = false;
+                    break;
+                }
+            }
+            else {
+                switch(ch)
+                {
+                case 'q':
+                    continue_looping = false;
+                    break;
+                case 'p':
+                    wurm.place();
+                    key_presses = 0;
+                    break;
+                }
             }
         } while(continue_looping);
 
