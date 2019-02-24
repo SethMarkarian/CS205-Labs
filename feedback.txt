@@ -1,3 +1,28 @@
+Lab 3
+Commenting and documentation (10/10 pts)
+Style (7/10 pts)
+Macro class (Lab 3.1) (0/6 pts)
+BaseClass (Lab 3.1) (0/8 pts)
+Adherence to programming standards (Lab 3.1) (6/6 pts)
+Robots class (incl. unit testing, Lab 3.2) (30/30 pts)
+Worm class (incl. unit testing, Lab 3.2) (30/30 pts)
+TOTAL 81/100
+
+Remarks. The Git log demonstrated a healthy working style – regular commits coming from both of you.
+
+Poor style (instance variables should be private by default, with getters and setters where appropriate, -3 pts).
+
+Missing Macro class (-6 pts).
+
+Missing BaseClass (-8 pts).
+
+The start of methods are well documented. Be sure to insert extra comments when method implementations run to 10+ lines.
+
+No demonstration of timer_start in Worm (-2 pts).
+
+Very good implementations of Robots and Worm engines.
+
+
 Lab 2
 Commenting and documentation (10/10 pts)
 Style (7/10 pts)
