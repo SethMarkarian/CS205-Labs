@@ -86,24 +86,27 @@ void Robots::movePlayerSW() {
  */
 void Robots::moveRobots() {
     for(int i = 0; i < 4; i++) {
-        if(player.first > robots[i].first) {
-            robots[i].first += 1;
+        if(robots[i].first != -1) {
+            if(player.first > robots[i].first) {
+                robots[i].first += 1;
+            }
+            else if(player.first < robots[i].first) {
+                robots[i].first -= 1;
+            }
+            else if(player.second > robots[i].second) {
+                robots[i].second += 1;
+            }
+            else if(player.second < robots[i].second) {
+                robots[i].second -= 1;
+            }
+            else if(robots[i].first == rows) {
+                robots[i].first -= 1;
+            }
+            else if(robots[i].second == cols) {
+                robots[i].second -= 1;
+            }
         }
-        if(player.first < robots[i].first) {
-            robots[i].first -= 1;
-        }
-        if(player.second > robots[i].second) {
-            robots[i].second += 1;
-        }
-        if(player.second < robots[i].second) {
-            robots[i].second -= 1;
-        }
-        if(robots[i].first == rows) {
-            robots[i].first -= 1;
-        }
-        if(robots[i].second == cols) {
-            robots[i].second -= 1;
-        }
+
     }
 }
 

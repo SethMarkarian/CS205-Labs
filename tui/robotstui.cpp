@@ -12,6 +12,9 @@ void RobotsTUI::draw_screen() {
 
     // clear screen return cursor to (0,0)
     clear();
+    if(r.win()) {
+        mvprintw(0, 15, "You Win!");
+    }
     r.isDead();
     r.moveRobots();
     r.updateBoard();
@@ -21,9 +24,9 @@ void RobotsTUI::draw_screen() {
         for(int j = 0; j < r.getCols(); j++) {
             display += r.get(i, j);
         }
-        //mvprintw(i, 0, display.c_str());
-        printw(display.c_str());
-        move(i, 0);
+        mvprintw(i, 0, display.c_str());
+        //printw(display.c_str());
+        //move(i, 0);
     }
 }
 
@@ -53,8 +56,8 @@ void RobotsTUI::run() {
     bool continue_looping = true;
 
     // draw the current screen
-    refresh();
-    draw_screen();
+    //refresh();
+    //draw_screen();
 
     do {
 
@@ -65,24 +68,18 @@ void RobotsTUI::run() {
         // obtain character from keyboard
         int ch = getch();
 
-        if(r.win()) {
-            continue_looping = false;
-        }
-        if(r.playerDead()) {
-            continue_looping = false;
-        }
         // operate based on input character
         switch (ch) {
-        case KEY_DOWN:
+        case KEY_RIGHT:
             r.movePlayerS();
             break;
-        case KEY_UP:
+        case KEY_LEFT:
             r.movePlayerN();
             break;
-        case KEY_LEFT:
+        case KEY_UP:
             r.movePlayerW();
             break;
-        case KEY_RIGHT:
+        case KEY_DOWN:
             r.movePlayerE();
             break;
         case '*':
@@ -92,6 +89,7 @@ void RobotsTUI::run() {
             continue_looping = false;
             break;
         }
+        r.moveRobots();
     } while(continue_looping);
 
         // cleanup the window and return control to bash
