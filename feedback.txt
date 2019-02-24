@@ -8,7 +8,9 @@ Robots class (incl. unit testing, Lab 3.2) (30/30 pts)
 Worm class (incl. unit testing, Lab 3.2) (30/30 pts)
 TOTAL 81/100
 
-Remarks. The Git log demonstrated a healthy working style – regular commits coming from both of you.
+Remarks. Good effort, Chloe and Seth. You lost most points on absence of work from Lab 3.1. Your Robots and Worm attempts were excellent.
+
+The Git log demonstrated a healthy working style – regular commits coming from both of you.
 
 Poor style (instance variables should be private by default, with getters and setters where appropriate, -3 pts).
 
