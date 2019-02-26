@@ -2,7 +2,15 @@
 
 RobotsTUI::RobotsTUI()
 {
-    //r = Robots(10,6);
+    r = new Robots(10,6);
+}
+
+RobotsTUI::RobotsTUI(int row, int col) {
+    r = new Robots(row, col);
+}
+
+RobotsTUI::~RobotsTUI() {
+    delete r;
 }
 
 void RobotsTUI::draw_screen() {

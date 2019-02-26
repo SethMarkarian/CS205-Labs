@@ -13,6 +13,8 @@ class RobotsTUI : public Screen
 
 public:
     RobotsTUI();
+    ~RobotsTUI();
+    RobotsTUI(int row, int col);
     void run();
 };
 

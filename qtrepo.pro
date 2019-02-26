@@ -5,8 +5,9 @@ SUBDIRS += \
     unittest \
     Engines \
     engine_tests \
-    ncurses_example \
-    tui
+    #ncurses_example \
+    #tui \
+    TinyGame
 
 HEADERS += \
     robotstui.h
