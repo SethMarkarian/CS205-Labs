@@ -17,6 +17,13 @@ public:
      */
     WormsTUI();
     /**
+     * @brief WormsTUI constructor with rows and columns input
+     * @param r rows
+     * @param c columns
+     */
+    WormsTUI(int ro, int co);
+    ~WormsTUI();
+    /**
      * @brief run runs the game
      */
     void run();

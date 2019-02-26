@@ -5,7 +5,21 @@ WormsTUI::WormsTUI()
     // initializes instance variables
     r = 20;
     c = 20;
+    wurm = new Worm(r, c);
     key_presses = 0;
+}
+
+WormsTUI::WormsTUI(int ro, int co)
+{
+    r = ro;
+    c = co;
+    wurm = new Worm(r, c);
+    key_presses = 0;
+}
+
+WormsTUI::~WormsTUI()
+{
+    delete wurm;
 }
 
 void WormsTUI::draw_screen()
