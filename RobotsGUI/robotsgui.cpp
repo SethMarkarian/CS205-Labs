@@ -6,7 +6,9 @@ RobotsGUI::RobotsGUI(QWidget *parent) :
     ui(new Ui::RobotsGUI)
 {
     ui->setupUi(this);
+
     r = new Robots();
+
     draw_board();
 }
 
@@ -32,6 +34,7 @@ void RobotsGUI::on_south_button_clicked() {
 
 void RobotsGUI::on_east_button_clicked() {
     r->movePlayerE();
+    draw_board();
 }
 
 void RobotsGUI::on_quit_button_clicked() {
@@ -48,5 +51,6 @@ void RobotsGUI::draw_board() {
         temp_board += '\n';
     }
 
-
+    //ui->board_display->clear();
+    //ui->board_display->setText(temp_board);
 }
