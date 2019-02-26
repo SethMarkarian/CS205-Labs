@@ -9,8 +9,9 @@ class engine
 protected:
     int rows;
     int cols;
-    char ** gameboard; // who knows how to use this??
+
 public:
+    char ** gameboard; // who knows how to use this??
     engine(int r, int c);
     engine();
     ~engine();

@@ -1,14 +1,15 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    lab \
-    unittest \
+    #lab \
+    #unittest \
     Engines \
-    engine_tests \
+    #engine_tests \
     #ncurses_example \
     #tui \
     TinyGame    \
-    TextFinder
+    TextFinder \
+    RobotsGUI
 
 HEADERS += \
     robotstui.h
