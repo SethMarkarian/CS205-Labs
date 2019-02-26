@@ -5,7 +5,9 @@
 
 int main()
 {
-    RobotsTUI r;
-    r.run();
+    //RobotsTUI r;
+    //r.run();
+    WormsTUI w(10,20);
+    w.run();
     return 0;
 }

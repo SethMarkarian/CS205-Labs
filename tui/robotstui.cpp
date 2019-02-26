@@ -5,8 +5,8 @@ RobotsTUI::RobotsTUI()
     r = new Robots(10,6);
 }
 
-RobotsTUI::RobotsTUI(int row, int col) {
-    r = new Robots(row, col);
+RobotsTUI::RobotsTUI(int ro, int co) {
+    r = new Robots(ro, co);
 }
 
 RobotsTUI::~RobotsTUI() {
@@ -20,18 +20,18 @@ void RobotsTUI::draw_screen() {
 
     // clear screen return cursor to (0,0)
     clear();
-    if(r.win()) {
+    if(r->win()) {
         mvprintw(0, 15, "You Win!");
     }
-    r.isDead();
-    r.moveRobots();
-    r.updateBoard();
+    r->isDead();
+    r->moveRobots();
+    r->updateBoard();
 
     //print line by line the current board
-    for(int i = 0; i < r.getRows(); i++ ) {
+    for(int i = 0; i < r->getRows(); i++ ) {
         std::string display;
-        for(int j = 0; j < r.getCols(); j++) {
-            display += r.get(i, j);
+        for(int j = 0; j < r->getCols(); j++) {
+            display += r->get(i, j);
         }
         mvprintw(i, 0, display.c_str());
         //printw(display.c_str());
@@ -78,28 +78,28 @@ void RobotsTUI::run() {
         int ch = getch();
 
         // operate based on input character
-        if(!r.win() && !r.playerDead()) {
+        if(!r->win() && !r->playerDead()) {
             switch (ch) {
             case KEY_RIGHT: //move right
-                r.movePlayerE();
+                r->movePlayerE();
                 break;
             case KEY_LEFT: //move left
-                r.movePlayerW();
+                r->movePlayerW();
                 break;
             case KEY_UP: //move up
-                r.movePlayerN();
+                r->movePlayerN();
                 break;
             case KEY_DOWN: //move down
-                r.movePlayerS();
+                r->movePlayerS();
                 break;
             case '*': //random teleport
-                r.randomTeleport();
+                r->randomTeleport();
                 break;
             case 'q': //quit
                 continue_looping = false;
                 break;
             }
-            r.moveRobots();
+            r->moveRobots();
         }
         //game is over and want to refesh
         else {
@@ -108,7 +108,7 @@ void RobotsTUI::run() {
                 continue_looping = false;
                 break;
             case 'p':
-                r.resetGame();
+                r->resetGame();
                 break;
         }
         }

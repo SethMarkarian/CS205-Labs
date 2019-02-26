@@ -9,7 +9,7 @@ class WormsTUI : public Screen
     int r; // rows
     int c; // columns
     void draw_screen(); // draws the TUI display
-    Worm wurm; // worm engine being played
+    Worm * wurm; // worm engine being played
     int key_presses; // amount of key presses user has made
 public:
     /**

@@ -46,20 +46,24 @@ void WormsTUI::draw_screen()
         std::string disp;
         for(int j = 0; j < c; j++)
         {
-            disp += wurm.get(i, j);
+            disp += wurm->get(i, j);
         }
         mvprintw(p++, 0, disp.c_str());
     }
+    // score
+    mvprintw(p++, 4, "Score:");
+    std::string sc = std::to_string(wurm -> score);
+    mvprintw(p++, 4, sc.c_str());
     // other information useful to user
     mvprintw(p++, 4, "Key presses!");
     std::string k_p = std::to_string(key_presses);
     mvprintw(p++, 4, k_p.c_str());
     mvprintw(p++, 4, "Have you lost/ won yet?");
-    if(wurm.won_yet)
+    if(wurm->won_yet)
     {
         mvprintw(p++, 4, "You have won!");
     }
-    else if(wurm.lost_yet)
+    else if(wurm->lost_yet)
     {
         mvprintw(p++, 4, "You have lost!");
     }
@@ -106,24 +110,24 @@ void WormsTUI::run()
 
             // obtain character from keyboard
             int ch = getch();
-            if(!wurm.lost_yet && !wurm.won_yet) // if the user has not won or lost yet, continue playing
+            if(!wurm->lost_yet && !wurm->won_yet) // if the user has not won or lost yet, continue playing
             {
                 // operate based on input character
                 switch (ch) {
                 case KEY_DOWN:
-                    wurm.down();
+                    wurm->down();
                     key_presses++;
                     break;
                 case KEY_UP:
-                    wurm.up();
+                    wurm->up();
                     key_presses++;
                     break;
                 case KEY_LEFT:
-                    wurm.left();
+                    wurm->left();
                     key_presses++;
                     break;
                 case KEY_RIGHT:
-                    wurm.right();
+                    wurm->right();
                     key_presses++;
                     break;
                 case 'q':
@@ -138,7 +142,7 @@ void WormsTUI::run()
                     continue_looping = false;
                     break;
                 case 'p':
-                    wurm.place();
+                    wurm->place();
                     key_presses = 0;
                     break;
                 }

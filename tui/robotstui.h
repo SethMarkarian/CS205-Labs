@@ -8,13 +8,13 @@
 
 class RobotsTUI : public Screen
 {
-    Robots r;
+    Robots* r;
     void draw_screen();
 
 public:
     RobotsTUI();
     ~RobotsTUI();
-    RobotsTUI(int row, int col);
+    RobotsTUI(int ro, int co);
     void run();
 };
 

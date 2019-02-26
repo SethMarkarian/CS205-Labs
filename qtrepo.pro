@@ -6,8 +6,9 @@ SUBDIRS += \
     Engines \
     engine_tests \
     #ncurses_example \
-    #tui \
-    TinyGame
+    tui \
+    TinyGame    \
+    TextFinder
 
 HEADERS += \
     robotstui.h
