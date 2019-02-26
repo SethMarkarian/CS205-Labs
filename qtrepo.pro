@@ -6,7 +6,7 @@ SUBDIRS += \
     Engines \
     engine_tests \
     #ncurses_example \
-    tui \
+    #tui \
     TinyGame    \
     TextFinder
 
