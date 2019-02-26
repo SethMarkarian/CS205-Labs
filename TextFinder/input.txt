@@ -1,0 +1,1 @@
+Hello World! We are testing a Text Finder project in Qt Creator!

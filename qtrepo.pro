@@ -6,7 +6,8 @@ SUBDIRS += \
     Engines \
     engine_tests \
     ncurses_example \
-    tui
+    tui \
+    TextFinder
 
 HEADERS += \
     robotstui.h
