@@ -17,27 +17,38 @@ RobotsGUI::~RobotsGUI()
     delete ui;
 }
 
-void RobotsGUI::on_west_button_clicked() {
-    r->movePlayerW();
-    draw_board();
-}
-
-void RobotsGUI::on_north_button_clicked() {
+void RobotsGUI::on_N_button_clicked()
+{
     r->movePlayerN();
     draw_board();
 }
 
-void RobotsGUI::on_south_button_clicked() {
+void RobotsGUI::on_S_button_clicked()
+{
     r->movePlayerS();
     draw_board();
 }
 
-void RobotsGUI::on_east_button_clicked() {
+void RobotsGUI::on_W_button_clicked()
+{
+    r->movePlayerW();
+    draw_board();
+}
+
+void RobotsGUI::on_E_button_clicked()
+{
     r->movePlayerE();
     draw_board();
 }
 
-void RobotsGUI::on_quit_button_clicked() {
+void RobotsGUI::on_T_button_clicked()
+{
+    r->randomTeleport();
+    draw_board();
+}
+
+void RobotsGUI::on_quit_button_clicked()
+{
     close();
 }
 
@@ -51,6 +62,6 @@ void RobotsGUI::draw_board() {
         temp_board += '\n';
     }
 
-    //ui->board_display->clear();
-    //ui->board_display->setText(temp_board);
+    ui->board_display->clear();
+    ui->board_display->setText(temp_board);
 }

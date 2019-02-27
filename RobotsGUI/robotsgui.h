@@ -21,12 +21,18 @@ public:
     ~RobotsGUI();
 
 private slots:
-    void on_west_button_clicked();
-    void on_north_button_clicked();
-    void on_south_button_clicked();
-    void on_east_button_clicked();
 
     void on_quit_button_clicked();
+
+    void on_N_button_clicked();
+
+    void on_S_button_clicked();
+
+    void on_W_button_clicked();
+
+    void on_E_button_clicked();
+
+    void on_T_button_clicked();
 
 private:
 
