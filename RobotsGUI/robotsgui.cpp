@@ -54,6 +54,9 @@ void RobotsGUI::on_quit_button_clicked()
 
 void RobotsGUI::draw_board() {
     QString temp_board = "";
+    r->isDead();
+    r->moveRobots();
+    r->updateBoard();
 
     for(int row = 0; row < r->getRows(); row++) {
         for(int col = 0; col < r->getCols(); col++) {
