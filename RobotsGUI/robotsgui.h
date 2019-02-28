@@ -17,7 +17,7 @@ class RobotsGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit RobotsGUI(QWidget *parent = nullptr);
+    explicit RobotsGUI(QWidget *parent = 0);
     ~RobotsGUI();
 
 private slots:

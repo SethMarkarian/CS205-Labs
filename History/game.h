@@ -6,7 +6,9 @@ class Player;
 
 class Game
 {
-    Player * pl;
+    Player * pl; //player that played the game
+    char * name; //name of game
+    int fs; //final score
 public:
     Game();
     Game(Player *p);
