@@ -10,7 +10,8 @@ SUBDIRS += \
     TinyGame    \
     TextFinder \
     RobotsGUI \
-    WormGUI
+    WormGUI \
+    History
 
 HEADERS += \
     robotstui.h
