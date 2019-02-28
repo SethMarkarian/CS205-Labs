@@ -13,6 +13,10 @@ public:
     Game();
     Game(Player *p);
     ~Game();
+
+    Player getPlayer();
+    char getName();
+    int getFinalScore();
 };
 
 #endif // GAME_H
