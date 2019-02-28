@@ -5,3 +5,8 @@ Player::Player()
 {
 
 }
+
+Player::Player(Game *g)
+{
+
+}

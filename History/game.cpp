@@ -4,3 +4,8 @@ Game::Game()
 {
 
 }
+
+Game::Game(Player *p)
+{
+
+}
