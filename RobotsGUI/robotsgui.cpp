@@ -15,6 +15,7 @@ RobotsGUI::RobotsGUI(QWidget *parent) :
 RobotsGUI::~RobotsGUI()
 {
     delete ui;
+    delete r;
 }
 
 void RobotsGUI::on_N_button_clicked()
