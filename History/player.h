@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "game.h"
+#include "gamehistory.h"
 
 class Game; // forward declaration when game.h is included
 
@@ -12,6 +13,7 @@ class Player
     Game * ga;
 
 public:
+    GameHistory gh;
     Player();
     Player(Game *g);
     ~Player();

@@ -22,20 +22,31 @@ int PlayerGameHistory::numPlayers() {
 }
 
 int PlayerGameHistory::avgGamesPerPlayer(Player p) {
-    return 0; //Insert method from game history class
+    return games.size() / players.size();
 }
 
 int PlayerGameHistory::topScore() {
-    //loop over players to find top score for a specific game
-    return 0;
+    int max = -1;
+    for(int i = 0; i < games.size(); i++) {
+        if(games[i].getFinalScore() > max) {
+            max = games[i].getFinalScore();
+        }
+    }
+    return max;
 }
 
 int PlayerGameHistory::avgScore() {
-    //find average for all games
-    return 0;
+    int total = 0;
+    for(int i = 0; i < games.size(); i++) {
+       total += games[i].getFinalScore();
+    }
+    return total / games.size();
 }
 
 int PlayerGameHistory::avgScoreForPlayer(Player p) {
-    //find average score for a specific player
-    return 0;
+    int total = 0;
+    for(int i = 0; i < p.gh.games.size(); i++) {
+        total += p.gh.games[i].getFinalScore();
+    }
+    return total / p.gh.games.size();
 }
