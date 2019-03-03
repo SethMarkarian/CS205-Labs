@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>670</width>
-    <height>454</height>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>18</x>
      <y>19</y>
      <width>491</width>
-     <height>421</height>
+     <height>481</height>
     </rect>
    </property>
    <property name="font">
@@ -34,53 +34,53 @@
   <widget class="QPushButton" name="up_button">
    <property name="geometry">
     <rect>
-     <x>571</x>
-     <y>120</y>
+     <x>570</x>
+     <y>110</y>
      <width>41</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>up</string>
+    <string>U</string>
    </property>
   </widget>
   <widget class="QPushButton" name="down_button">
    <property name="geometry">
     <rect>
      <x>571</x>
-     <y>160</y>
+     <y>150</y>
      <width>41</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>down</string>
+    <string>D</string>
    </property>
   </widget>
   <widget class="QPushButton" name="left_button">
    <property name="geometry">
     <rect>
      <x>531</x>
-     <y>140</y>
+     <y>129</y>
      <width>41</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>left</string>
+    <string>L</string>
    </property>
   </widget>
   <widget class="QPushButton" name="right_button">
    <property name="geometry">
     <rect>
      <x>611</x>
-     <y>140</y>
+     <y>129</y>
      <width>41</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>right</string>
+    <string>R</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quit_button">
@@ -89,11 +89,11 @@
      <x>570</x>
      <y>200</y>
      <width>41</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>quit</string>
+    <string>Q</string>
    </property>
   </widget>
  </widget>

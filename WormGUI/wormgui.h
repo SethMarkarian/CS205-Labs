@@ -21,21 +21,37 @@ public:
     ~WormGUI();
 
 private slots:
+    /**
+     * @brief on_quit_button_clicked quits the game when the button is pressed
+     */
     void on_quit_button_clicked();
 
+    /**
+     * @brief on_down_button_clicked moves the worm down when the button is pressed
+     */
     void on_down_button_clicked();
 
+    /**
+     * @brief on_right_button_clicked moves the worm right when the button is pressed
+     */
     void on_right_button_clicked();
 
+    /**
+     * @brief on_up_button_clicked moves the worm up when the button is pressed
+     */
     void on_up_button_clicked();
 
+    /**
+     * @brief on_left_button_clicked moves the worm left when the button is pressed
+     */
     void on_left_button_clicked();
 
 private:
-    int ro;
-    int co;
-    Worm * wurm;
-    void draw_board();
+    int ro; // rows of the game
+    int co; // columns of the game
+    Worm * wurm; // worm engine being played
+    void draw_board(); // draws the board of the GUI
+    void lost(); // determines if the player has lost, therefore if the game should quit
     Ui::WormGUI *ui;
 };
 
