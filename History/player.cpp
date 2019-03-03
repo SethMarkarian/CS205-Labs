@@ -3,12 +3,15 @@
 
 Player::Player()
 {
-    gh = new GameHistory();
+
 }
 
-Player::Player(Game *g)
+Player::Player(Game *g, char * f, char * l, char * a)
 {
     ga = g;
+    fn = f;
+    ln = l;
+    ad = a;
     gh = new GameHistory();
 }
 
@@ -16,18 +19,26 @@ Player::~Player() {
 
 }
 
-void Player::setFirstName(char *f) {
-    fn = f;
+char * Player::getFirstName() {
+    return fn;
 }
 
-void Player::setLastName(char *l) {
-    ln = l;
+char * Player::getLastName() {
+    return ln;
 }
 
-void Player::setAddress(char *a) {
-    ad = a;
+char * Player::getAddress() {
+    return ad;
 }
 
-void Player::addToGameHistory() {
-    gh->addGame(ga);
+Game * Player::getGame() {
+    return ga;
+}
+
+GameHistory * Player::getGameHistory() {
+    return gh;
+}
+
+void Player::addToGameHistory(Game * g) {
+    gh->addGame(g);
 }

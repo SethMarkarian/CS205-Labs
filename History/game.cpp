@@ -5,9 +5,11 @@ Game::Game()
 
 }
 
-Game::Game(Player *p)
+Game::Game(Player *p, char * n, int f)
 {
     pl = p;
+    name = n;
+    fs = f;
 }
 
 Game::~Game() {

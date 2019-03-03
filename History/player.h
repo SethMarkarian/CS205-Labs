@@ -11,17 +11,19 @@ class Player
     char * ln; // stands for last name
     char * ad; // stands for address
     Game * ga;
+    GameHistory * gh;
 
 public:
-    GameHistory *gh;
     Player();
-    Player(Game *g);
+    Player(Game *g, char * f, char * l, char * a);
     ~Player();
 
-    void setFirstName(char * f);
-    void setLastName(char * l);
-    void setAddress(char * a);
-    void addToGameHistory();
+    char * getFirstName(); //all gets
+    char * getLastName();
+    char * getAddress();
+    Game * getGame();
+    GameHistory * getGameHistory();
+    void addToGameHistory(Game * g);
 };
 
 #endif // PLAYER_H

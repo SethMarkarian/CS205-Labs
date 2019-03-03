@@ -11,7 +11,7 @@ class Game
     int fs; //final score
 public:
     Game();
-    Game(Player *p);
+    Game(Player *p, char * n, int f);
     ~Game();
 
     Player getPlayer();

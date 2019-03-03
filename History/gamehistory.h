@@ -7,12 +7,15 @@
 class GameHistory
 {
     Player * pl;
-
+    std::vector<Game *> games;
 
 public:
-    std::vector<Game *> games;
     GameHistory();
     void addGame(Game *g);
+    Player * getPlayer();
+    int getTotalGames();
+    Game * getGame(int i);
+
 
 };
 

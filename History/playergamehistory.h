@@ -7,12 +7,13 @@
 
 class PlayerGameHistory
 {
-    std::vector<Player> players;
-    std::vector<Game> games;
+    std::vector<Player *> players;
+    std::vector<Game *> games;
 public:
     PlayerGameHistory();
-    void addPlayer(Player p);
-    void addGame(Game g);
+    ~PlayerGameHistory();
+    void addPlayer(Player *p);
+    void addGame(Game *g);
     int numGamesPlayed();
     int numPlayers();
     int avgGamesPerPlayer();
