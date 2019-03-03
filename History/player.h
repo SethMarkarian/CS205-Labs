@@ -13,10 +13,15 @@ class Player
     Game * ga;
 
 public:
-    GameHistory gh;
+    GameHistory *gh;
     Player();
     Player(Game *g);
     ~Player();
+
+    void setFirstName(char * f);
+    void setLastName(char * l);
+    void setAddress(char * a);
+    void addToGameHistory();
 };
 
 #endif // PLAYER_H

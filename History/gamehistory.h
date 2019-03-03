@@ -10,9 +10,9 @@ class GameHistory
 
 
 public:
-    std::vector<Game> games;
+    std::vector<Game *> games;
     GameHistory();
-    void addGame(Game g);
+    void addGame(Game *g);
 
 };
 

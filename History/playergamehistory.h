@@ -15,7 +15,7 @@ public:
     void addGame(Game g);
     int numGamesPlayed();
     int numPlayers();
-    int avgGamesPerPlayer(Player p);
+    int avgGamesPerPlayer();
     int topScore();
     int avgScore();
     int avgScoreForPlayer(Player p);

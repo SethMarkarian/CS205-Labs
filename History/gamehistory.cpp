@@ -5,6 +5,6 @@ GameHistory::GameHistory()
 
 }
 
-void GameHistory::addGame(Game g) {
+void GameHistory::addGame(Game *g) {
     games.push_back(g);
 }

@@ -21,8 +21,12 @@ int PlayerGameHistory::numPlayers() {
     return players.size();
 }
 
-int PlayerGameHistory::avgGamesPerPlayer(Player p) {
-    return games.size() / players.size();
+int PlayerGameHistory::avgGamesPerPlayer() {
+    int total = 0;
+    for(int i = 0; i < players.size(); i++) {
+        total += players[i].gh.games.size();
+    }
+    return total / players.size();
 }
 
 int PlayerGameHistory::topScore() {
@@ -46,7 +50,7 @@ int PlayerGameHistory::avgScore() {
 int PlayerGameHistory::avgScoreForPlayer(Player p) {
     int total = 0;
     for(int i = 0; i < p.gh.games.size(); i++) {
-        total += p.gh.games[i].getFinalScore();
+        total += p.gh.games[i]->getFinalScore();
     }
     return total / p.gh.games.size();
 }
