@@ -1,6 +1,6 @@
 #include <iostream>
 
- #include "/gtest/gtest.h"
+ #include "../gtest/gtest.h"
  #include "../History/game.h"
  #include "../History/player.h"
  #include "../History/playergamehistory.h"
@@ -39,12 +39,68 @@
 
  };
 
- TEST(general, TESTSIMPLE) {
-
-     /** replace with your own **/
-
+ TEST(general, TESTGAMEFINALSCORE) {
+     char c = 'w';
+     Game g(new Player(), &c, 250);
+     ASSERT_EQ(250, g.getFinalScore());
  }
 
+ TEST(general, TESTGAMENAME) {
+     char c = 'w';
+     Game g(new Player(), &c, 250);
+     ASSERT_EQ(&c, g.getName());
+ }
+
+ TEST(general, TESTGAMEHISTORYNUMBEROFGAMES) {
+     GameHistory gh;
+     gh.addGame(new Game());
+     ASSERT_EQ(1, gh.getTotalGames());
+ }
+
+ TEST(general, TESTPLAYERFN) {
+     char c = 'w';
+     char r = 'r';
+     char s = 'e';
+     Player p(new Game(), &c, &r, &s);
+     ASSERT_EQ(&c, p.getFirstName());
+ }
+
+ TEST(general, TESTPLAYERLN) {
+     char c = 'w';
+     char r = 'r';
+     char s = 'e';
+     Player p(new Game(), &c, &r, &s);
+     ASSERT_EQ(&r, p.getLastName());
+ }
+
+ TEST(general, TESTPLAYERAD) {
+     char c = 'w';
+     char r = 'r';
+     char s = 'e';
+     Player p(new Game(), &c, &r, &s);
+     ASSERT_EQ(&s, p.getAddress());
+ }
+
+ TEST(general, TESTPLAYERADDGAME) {
+     char c = 'w';
+     char r = 'r';
+     char s = 'e';
+     Player p(new Game(), &c, &r, &s);
+     p.addToGameHistory(new Game());
+     ASSERT_EQ(1, p.getGameHistory()->getTotalGames());
+ }
+
+ TEST(general, TESTPLAYERGAMEHISTORYNUMGAMES) {
+     PlayerGameHistory pgh;
+     pgh.addGame(new Game());
+     ASSERT_EQ(1, pgh.numGamesPlayed());
+ }
+
+ TEST(general, TESTPLAYERGAMEHISTORYNUMPLAYERS) {
+     PlayerGameHistory pgh;
+     pgh.addPlayer(new Player());
+     ASSERT_EQ(1, pgh.numPlayers());
+ }
 
  int main(int argc, char **argv) {
 

@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include "player.h"
 
 class Player;
@@ -15,7 +16,7 @@ public:
     ~Game();
 
     Player getPlayer();
-    char getName();
+    char * getName();
     int getFinalScore();
 };
 

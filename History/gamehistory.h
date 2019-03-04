@@ -1,20 +1,25 @@
 #ifndef GAMEHISTORY_H
 #define GAMEHISTORY_H
 
-#include <player.h>
+#include "player.h"
+#include "game.h"
 #include <vector>
+
+class Game;
+
+class Player;
 
 class GameHistory
 {
     Player * pl;
-    std::vector<Game *> games;
+    std::vector<Game*> games;
 
 public:
     GameHistory();
-    void addGame(Game *g);
-    Player * getPlayer();
+    void addGame(Game* g);
+    Player* getPlayer();
     int getTotalGames();
-    Game * getGame(int i);
+    Game* getGame(int i);
 
 
 };

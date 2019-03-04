@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     #lab \
-    unittest \
+    #unittest \
     Engines \
     #engine_tests \
     #ncurses_example \

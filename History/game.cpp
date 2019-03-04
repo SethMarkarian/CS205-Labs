@@ -20,8 +20,8 @@ Player Game::getPlayer() {
     return *pl;
 }
 
-char Game::getName() {
-    return *name;
+char * Game::getName() {
+    return name;
 }
 
 int Game::getFinalScore() {
