@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     #lab \
-    #unittest \
+    unittest \
     Engines \
     #engine_tests \
     #ncurses_example \
@@ -11,7 +11,8 @@ SUBDIRS += \
     TextFinder \
     RobotsGUI \
     WormGUI \
-    History
+    History \
+    HistoryUnitTests
 
 HEADERS += \
     robotstui.h
