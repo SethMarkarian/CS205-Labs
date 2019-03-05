@@ -13,9 +13,6 @@ protected:
 public:
     Screen();
     void run();
-
-
-
 };
 
 #endif // SCREEN_H

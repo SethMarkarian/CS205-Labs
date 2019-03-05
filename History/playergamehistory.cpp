@@ -95,3 +95,8 @@ int PlayerGameHistory::avgScoreForPlayer(Player p) {
     }
     return total / p.getGameHistory()->getTotalGames();
 }
+
+std::vector<Player *> PlayerGameHistory::retPlayers()
+{
+    return players;
+}

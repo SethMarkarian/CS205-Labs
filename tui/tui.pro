@@ -10,9 +10,15 @@ SOURCES += \
     ../Engines/worm.cpp \
     ../Engines/robots.cpp \
     wormstui.cpp \
-    robotstui.cpp
+    robotstui.cpp \
+    altscreen.cpp \
+    mainscreen.cpp \
+    ../History/game.cpp \
+    ../History/gamehistory.cpp \
+    ../History/player.cpp \
+    ../History/playergamehistory.cpp
 
-LIBS    += -lncurses
+LIBS    += -lncurses -lform
 
 HEADERS += \
     screen.h \
@@ -20,5 +26,10 @@ HEADERS += \
     ../Engines/worm.h \
     ../Engines/robots.h \
     wormstui.h \
-    robotstui.h
-
+    robotstui.h \
+    altscreen.h \
+    mainscreen.h \
+    ../History/game.h \
+    ../History/gamehistory.h \
+    ../History/player.h \
+    ../History/playergamehistory.h

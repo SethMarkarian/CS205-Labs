@@ -74,6 +74,12 @@ public:
      * @return Average Score for one player
      */
     int avgScoreForPlayer(Player p);
+
+    /**
+     * @brief retPlayers returns a vector of the Player * 's in players
+     * @return a vector of the Player * 's in players
+     */
+    std::vector<Player *> retPlayers();
 };
 
 #endif // PLAYERGAMEHISTORY_H

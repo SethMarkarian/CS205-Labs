@@ -6,13 +6,13 @@ SUBDIRS += \
     Engines \
     #engine_tests \
     #ncurses_example \
-    #tui \
-    TinyGame    \
-    TextFinder \
-    RobotsGUI \
-    WormGUI \
-    History \
-    HistoryUnitTests
+    tui \
+    #TinyGame    \
+    #TextFinder \
+    #RobotsGUI \
+    #WormGUI \
+    History #\
+    #HistoryUnitTests
 
 HEADERS += \
     robotstui.h
