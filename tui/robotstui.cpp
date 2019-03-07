@@ -28,7 +28,8 @@ void RobotsTUI::draw_screen() {
     r->updateBoard();
 
     //print line by line the current board
-    for(int i = 0; i < r->getRows(); i++ ) {
+    int i = 0;
+    for(; i < r->getRows(); i++ ) {
         std::string display;
         for(int j = 0; j < r->getCols(); j++) {
             display += r->get(i, j);
@@ -37,6 +38,9 @@ void RobotsTUI::draw_screen() {
         //printw(display.c_str());
         //move(i, 0);
     }
+    std::string s = "Score: ";
+    s += std::to_string(r->score);
+    mvprintw(i, 4, s.c_str());
 }
 
 void RobotsTUI::run() {

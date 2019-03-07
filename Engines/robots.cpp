@@ -15,6 +15,7 @@ Robots::Robots() : engine(10, 6)
     robots[3].second = 0;
     player.first = 2;
     player.second = 4;
+    score = 0;
 }
 
 /**
@@ -32,6 +33,7 @@ Robots::Robots(int r, int c) : engine(r, c){
     robots[3].second = rand() % rows;
     player.first = rand() % cols;
     player.second = rand() % rows;
+    score = 0;
 }
 
 /**
@@ -139,6 +141,7 @@ void Robots::isDead() {
                 robots[i].second = -1;
                 robots[j].first = -1;
                 robots[j].second = -1;
+                score += 2;
             }
         }
 

@@ -10,6 +10,11 @@ class Robots : public engine
 
 public:
     /**
+     * @brief score Final Score
+     */
+    int score;
+
+    /**
      * @brief array of robot positions
      */
 
