@@ -11,7 +11,7 @@ SUBDIRS += \
     #TextFinder \
     #RobotsGUI \
     #WormGUI \
-    History #\
+    History \ #\
     #HistoryUnitTests
 
 HEADERS += \

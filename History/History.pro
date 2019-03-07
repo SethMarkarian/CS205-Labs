@@ -8,10 +8,16 @@ SOURCES += \
     playergamehistory.cpp \
     player.cpp \
     game.cpp \
-    gamehistory.cpp
+    gamehistory.cpp \
+    dbtable.cpp \
+    dbtableex.cpp \
+    dbtool.cpp
 
 HEADERS += \
     playergamehistory.h \
     player.h \
     game.h \
-    gamehistory.h
+    gamehistory.h \
+    dbtable.h \
+    dbtableex.h \
+    dbtool.h
