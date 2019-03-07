@@ -79,6 +79,7 @@ public:
      * @brief retPlayers returns a vector of the Player * 's in players
      * @return a vector of the Player * 's in players
      */
+    std::vector<Player *> top_3();
     std::vector<Player *> retPlayers();
 };
 

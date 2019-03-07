@@ -56,6 +56,7 @@ void MainScreen::run()
     // draw the current screen
     draw_screen();
     AltScreen as;
+    NewPlayerScreen nps;
 
     do {
 
@@ -72,8 +73,10 @@ void MainScreen::run()
             // Create a New Player
             // Need Player FN, LN, Address
             // Create a New Player, add to PlayerGameHistory
-            as.run();
+            // as.run();
+            nps.run();
             draw_screen();
+            mvprintw(15, 4, nps.get_f_vals()[0].c_str());
             break;
         case 'b':
             // Select an Existing Player

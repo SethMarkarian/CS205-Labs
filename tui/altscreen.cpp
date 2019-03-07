@@ -2,16 +2,7 @@
 
 AltScreen::AltScreen()
 {
-    initscr();
-        cbreak();
-        noecho();
-        keypad(stdscr, TRUE);
 
-}
-
-AltScreen::~AltScreen()
-{
-    // how to delete a form??? and field???????
 }
 
 void AltScreen::startup()
@@ -19,7 +10,7 @@ void AltScreen::startup()
     // Initialize the interaction loop to run.
     continue_looping = true;
     // initialize displayed fields
-    fields_fill();
+    this->fields_fill();
     for(int i = 0; field[i] != NULL;  i++)
     {
         // Print a line for the option.
@@ -36,7 +27,7 @@ void AltScreen::startup()
     refresh();
 
     // display labels
-    disp_labels();
+    this->disp_labels();
 
     // perform last refresh
     refresh();
