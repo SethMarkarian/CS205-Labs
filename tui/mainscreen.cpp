@@ -55,6 +55,7 @@ void MainScreen::run()
 
     // draw the current screen
     draw_screen();
+    AltScreen as;
 
     do {
 
@@ -63,6 +64,7 @@ void MainScreen::run()
 
         // obtain character from keyboard
         int ch = getch();
+        std::string disp;
 
         // operate based on input character
         switch (ch) {
@@ -70,6 +72,8 @@ void MainScreen::run()
             // Create a New Player
             // Need Player FN, LN, Address
             // Create a New Player, add to PlayerGameHistory
+            as.run();
+            draw_screen();
             break;
         case 'b':
             // Select an Existing Player

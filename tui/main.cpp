@@ -4,6 +4,7 @@
 #include "robotstui.h"
 #include "wormstui.h"
 #include "mainscreen.h"
+#include "altscreen.h"
 
 int main()
 {
@@ -13,5 +14,7 @@ int main()
     //w.run();
     MainScreen ms;
     ms.run();
+    //AltScreen as;
+    //as.run();
     return 0;
 }

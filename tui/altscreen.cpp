@@ -2,62 +2,81 @@
 
 AltScreen::AltScreen()
 {
+    initscr();
+        cbreak();
+        noecho();
+        keypad(stdscr, TRUE);
+
+}
+
+AltScreen::~AltScreen()
+{
+    // how to delete a form??? and field???????
+}
+
+void AltScreen::startup()
+{
+    // Initialize the interaction loop to run.
     continue_looping = true;
-    // need to initialize fields; leave last field null
-    // need to initialize form
     // initialize displayed fields
-
-        // The parameters below are as follows:
-        //  1. int height    -- The number of rows in the field.
-        //  2. int width     -- The row width of the field.
-        //  3. int toprow    -- The screen row where the field top is placed.
-        //  4. int leftcol   -- The screen col where the field left-side is placed.
-        //  5. int offscreen -- Zero shows entire field.
-        //  6. int nbuffers  -- Number of additional buffers, use zero.
-
-        //field[0] = new_field(1, 10, 4, 18, 0, 0);
-        //field[1] = new_field(1, 10, 6, 18, 0, 0);
-
-        // Tag end of array so ncurses knows when there are no
-        // more fields.
-        //field[2] = NULL;
-
-        // Initialize the interaction loop to run.
-        //bool continue_looping = true;
-
-        /******** Set field options ********/
-
+    fields_fill();
+    for(int i = 0; field[i] != NULL;  i++)
+    {
         // Print a line for the option.
-        //set_field_back(field[0], A_UNDERLINE);
-        //set_field_back(field[1], A_UNDERLINE);
-
+        set_field_back(field[i], A_UNDERLINE);
         //  Don't go to next field when this field is filled up.
-        //field_opts_off(field[0], O_AUTOSKIP);
-        //field_opts_off(field[1], O_AUTOSKIP);
+        field_opts_off(field[i], O_AUTOSKIP);
+    }
 /******** Create form. ********/
-
     // Create the form and post it.
     my_form = new_form(field);
     post_form(my_form);
 
     // build the form
     refresh();
+
     // display labels
-    mvprintw(4, 10, "Value 1:");
-    mvprintw(6, 10, "Value 2:");
+    disp_labels();
 
     // perform last refresh
     refresh();
 }
 
+void AltScreen::fields_fill()
+{
+    // The parameters below are as follows:
+    //  1. int height    -- The number of rows in the field.
+    //  2. int width     -- The row width of the field.
+    //  3. int toprow    -- The screen row where the field top is placed.
+    //  4. int leftcol   -- The screen col where the field left-side is placed.
+    //  5. int offscreen -- Zero shows entire field.
+    //  6. int nbuffers  -- Number of additional buffers, use zero.
+
+    field[0] = new_field(1, 10, 4, 18, 0, 0);
+    field[1] = new_field(1, 10, 6, 18, 0, 0);
+
+    // Tag end of array so ncurses knows when there are no
+    // more fields.
+    field[2] = NULL;
+}
+
+void AltScreen::disp_labels()
+{
+    // display labels
+    mvprintw(4, 10, "Value 1:");
+    mvprintw(6, 10, "Value 2:");
+}
+
 void AltScreen::run()
 {
+    startup();
     receiving();
     closing();
 }
 
 void AltScreen::receiving()
 {
+    // back space doesn't work. didn't work in the example either.
     /******* Loop through to get user requests *******/
 
     do {
@@ -111,7 +130,7 @@ void AltScreen::closing()
     unpost_form(my_form);
     free_form(my_form);
     // store contents of fields before they are freed
-    for(int i = 0; i < sizeof(field) - 1;  i++) // last box of field is null
+    for(int i = 0; field[i] != NULL;  i++) // last box of field is null
     {
         f_vals.push_back(field_buffer(field[i], 0));
         // free the field
@@ -119,4 +138,9 @@ void AltScreen::closing()
     }
     // exit ncurses environment
     endwin();
+}
+
+std::vector<std::string> AltScreen::get_f_vals()
+{
+    return f_vals;
 }

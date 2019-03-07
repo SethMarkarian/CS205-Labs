@@ -3,6 +3,7 @@
 #include "screen.h"
 #include "../History/player.h"
 #include "../History/playergamehistory.h"
+#include "altscreen.h"
 
 class MainScreen:public Screen
 {
