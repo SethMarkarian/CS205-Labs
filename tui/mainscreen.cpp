@@ -3,6 +3,11 @@
 MainScreen::MainScreen()
 {
     p = new Player(nullptr, nullptr, nullptr, nullptr);
+    nps = NewPlayerScreen();
+    eps = ExistingPlayerScreen(pgh);
+    ttps = TopThreePlayersScreen(pgh);
+    ttgs = TopThreeGamesScreen(pgh);
+    ss = StatisticsScreen(pgh);
 }
 
 void MainScreen::draw_screen()
@@ -52,14 +57,20 @@ void MainScreen::run()
 
     // initialize the interaction loop to run
     bool continue_looping = true;
-
+    char * name = (char * )'w';
+    Game g = Game(p, name, 0);
+    WormsTUI w;
+    w.run();
+    g.setFinalScore(w.getScore());
+    p->addGame(&g);
     // draw the current screen
     draw_screen();
-    AltScreen as;
-    NewPlayerScreen nps;
+    //AltScreen as;
+    //NewPlayerScreen nps;
+    //ExistingPlayerScreen eps(pgh);
 
     do {
-
+        draw_screen();
         // draw the new screen
         refresh();
 
@@ -76,26 +87,54 @@ void MainScreen::run()
             // as.run();
             nps.run();
             draw_screen();
-            mvprintw(15, 4, nps.get_f_vals()[0].c_str());
+            p = new Player(nullptr, nps.get_f_vals()[0], nps.get_f_vals()[1], nps.get_f_vals()[2]);
             break;
         case 'b':
-            // Select an Existing Player
+            eps.run();
+            p = eps.returnCurrentPlayer();
+            draw_screen();
             break;
         case 'c':
-            // Display Top Three Players
+            ttps.run();
+            draw_screen();
             break;
         case 'd':
-            // Display Top Three Games Played
+            ttgs.run();
+            draw_screen();
             break;
         case 'e':
-            // Display Calculated Statistics
+            ss.run();
+            draw_screen();
             break;
-        case 'f':
-            // Play Robots
+        case 'f':{
+            if(p->getFirstName() != nullptr) {
+                char * name = (char * )'r';
+                Game g = Game(p, name, 0);
+                RobotsTUI r;
+                r.run();
+                g.setFinalScore(r.getScore());
+                p->addGame(&g);
+            }char * name = (char * )'w';
+            Game g = Game(p, name, 0);
+            WormsTUI w;
+            w.run();
+            g.setFinalScore(w.getScore());
+            p->addGame(&g);
+            draw_screen();
             break;
-        case 'g':
-            // Play Worm
+        }
+        case 'g': {
+            if(p->getFirstName() != nullptr) {
+                char * name = (char * )'w';
+                Game g = Game(p, name, 0);
+                WormsTUI w;
+                w.run();
+                g.setFinalScore(w.getScore());
+                p->addGame(&g);
+            }
+            draw_screen();
             break;
+        }
         case 'q':
             // Exit program
             continue_looping = false;
@@ -108,4 +147,8 @@ void MainScreen::run()
         endwin();
 
         std::cout << "exiting run\n";
+}
+
+void MainScreen::setPlayer(Player * pp) {
+    p = pp;
 }

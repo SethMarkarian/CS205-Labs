@@ -49,3 +49,7 @@ char * Game::getName() {
 int Game::getFinalScore() {
     return fs;
 }
+
+void Game::setFinalScore(int i) {
+    fs = i;
+}

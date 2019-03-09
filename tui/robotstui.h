@@ -16,6 +16,7 @@ public:
     ~RobotsTUI();
     RobotsTUI(int ro, int co);
     void run();
+    int getScore();
 };
 
 #endif // ROBOTSTUI_H

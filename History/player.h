@@ -89,6 +89,8 @@ public:
      * @param g game to add
      */
     void addToGameHistory(Game * g);
+
+    void addGame(Game * g);
 };
 
 #endif // PLAYER_H

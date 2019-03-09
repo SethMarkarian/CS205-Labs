@@ -56,6 +56,8 @@ public:
      * @return final score
      */
     int getFinalScore();
+
+    void setFinalScore(int i);
 };
 
 #endif // GAME_H

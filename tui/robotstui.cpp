@@ -124,3 +124,7 @@ void RobotsTUI::run() {
         std::cout << "exiting run\n";
 
 }
+
+int RobotsTUI::getScore() {
+    return r->score;
+}

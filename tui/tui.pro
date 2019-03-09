@@ -17,7 +17,11 @@ SOURCES += \
     ../History/gamehistory.cpp \
     ../History/player.cpp \
     ../History/playergamehistory.cpp \
-    newplayerscreen.cpp
+    newplayerscreen.cpp \
+    existingplayerscreen.cpp \
+    topthreeplayersscreen.cpp \
+    topthreegamesscreen.cpp \
+    statisticsscreen.cpp
 
 LIBS    += -lncurses -lform
 
@@ -34,4 +38,8 @@ HEADERS += \
     ../History/gamehistory.h \
     ../History/player.h \
     ../History/playergamehistory.h \
-    newplayerscreen.h
+    newplayerscreen.h \
+    existingplayerscreen.h \
+    topthreeplayersscreen.h \
+    topthreegamesscreen.h \
+    statisticsscreen.h

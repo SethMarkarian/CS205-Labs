@@ -5,16 +5,30 @@
 #include "../History/playergamehistory.h"
 #include "altscreen.h"
 #include "newplayerscreen.h"
+#include "existingplayerscreen.h"
+#include "topthreeplayersscreen.h"
+#include "topthreegamesscreen.h"
+#include "statisticsscreen.h"
+#include "robotstui.h"
+#include "wormstui.h"
 
 class MainScreen:public Screen
 {
-    Player * p;
-    PlayerGameHistory * pgh;
+
 protected:
+    NewPlayerScreen nps;
+    ExistingPlayerScreen eps;
+    TopThreePlayersScreen ttps;
+    TopThreeGamesScreen ttgs;
+    StatisticsScreen ss;
+
     void draw_screen();
 public:
+    Player * p;
+    PlayerGameHistory * pgh;
     MainScreen();
     void run();
+    void setPlayer(Player * pp);
 };
 
 #endif // MAINSCREEN_H

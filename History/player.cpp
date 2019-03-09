@@ -77,3 +77,7 @@ GameHistory * Player::getGameHistory() {
 void Player::addToGameHistory(Game * g) {
     gh->addGame(g);
 }
+
+void Player::addGame(Game * g) {
+    ga = g;
+}

@@ -27,6 +27,7 @@ public:
      * @brief run runs the game
      */
     void run();
+    int getScore();
 };
 
 #endif // WORMSTUI_H

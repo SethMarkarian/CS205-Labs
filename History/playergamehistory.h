@@ -80,6 +80,7 @@ public:
      * @return a vector of the Player * 's in players
      */
     std::vector<Player *> top_3();
+    std::vector<Game *> top_3_games();
     std::vector<Player *> retPlayers();
 };
 

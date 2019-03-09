@@ -119,6 +119,29 @@ std::vector<Player *> PlayerGameHistory::top_3()
     return ret;
 }
 
+std::vector<Game *> PlayerGameHistory::top_3_games()
+{
+    std::vector<Game *> temp = games;
+    std::vector<Game *> ret;
+    for(int i = 0; i < 3 && i < games.size(); i++)
+    {
+        int id = 0;
+        int max_avg = -1;
+        for(int j = 0; j < temp.size(); j++)
+        {
+            int now_avg = temp[j]->getFinalScore(); // should try to test this??
+            if(now_avg > max_avg)
+            {
+                id = j;
+                max_avg = now_avg;
+            }
+        }
+        ret.push_back(temp[id]);
+        temp.erase(temp.begin() + id);
+    }
+    return ret;
+}
+
 std::vector<Player *> PlayerGameHistory::retPlayers()
 {
     return players;

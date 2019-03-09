@@ -154,3 +154,7 @@ void WormsTUI::run()
 
             std::cout << "exiting run\n";
 }
+
+int WormsTUI::getScore() {
+    return wurm->score;
+}
