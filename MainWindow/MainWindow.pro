@@ -26,13 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    topthreeplayers.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    topthreeplayers.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    topthreeplayers.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "topthreeplayers.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,6 +17,19 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionExit_Program_triggered();
+
+    void on_actionTop_3_Players_triggered();
+
+    void on_actionTop_3_Games_triggered();
+
+    void on_actionCalculated_Statistics_triggered();
+
+    void on_actionNew_Player_triggered();
+
+    void on_actionSelect_Existing_Player_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
@@ -22,7 +37,3 @@ private:
 #endif // MAINWINDOW_H
 
 
-//HELPFUL STUFF
-//QWidget *wdg = new QWidget;
-//wdg->show();
-//hide();//this will disappear main window

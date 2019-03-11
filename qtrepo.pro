@@ -6,13 +6,13 @@ SUBDIRS += \
     Engines \
     #engine_tests \
     #ncurses_example \
-    tui \ #\
-    MainWindow \
+    #tui \ #\
+    MainWindow #\ #\
     #TinyGame    \
     #TextFinder \
     #RobotsGUI \
     #WormGUI \
-    History #\
+    #History #\
     #HistoryUnitTests
 
 HEADERS += \
