@@ -11,7 +11,6 @@ SOURCES += \
     ../Engines/robots.cpp \
     wormstui.cpp \
     robotstui.cpp \
-    altscreen.cpp \
     mainscreen.cpp \
     ../History/game.cpp \
     ../History/gamehistory.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     ../Engines/robots.h \
     wormstui.h \
     robotstui.h \
-    altscreen.h \
     mainscreen.h \
     ../History/game.h \
     ../History/gamehistory.h \
