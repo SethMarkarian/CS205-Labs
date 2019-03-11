@@ -1,3 +1,20 @@
+Lab 4
+Commenting and documentation (10/10 pts)
+Style (10/10 pts)
+Playability (25/30 pts)
+Functionality (35/40 pts)
+Correct inheritance structure (10/10 pts)
+TOTAL 90/100
+
+Remarks. Very good work, Seth and Chloe.
+
+Strong Robot engine implementation, but some functionality missing (-5 pts). E.g., random teleport did not work in commit e6e3e5e7593e2c01839d55ec6976e41319d3b33d.
+
+Git log looking good.
+
+Minor issues with game flow (-5 pts). E.g., try to make it possible to transition from Robots to Worm or vice versa.
+
+
 Lab 3
 Commenting and documentation (10/10 pts)
 Style (7/10 pts)
