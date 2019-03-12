@@ -13,6 +13,8 @@ SOURCES += \
     dbtableex.cpp \
     dbtool.cpp
 
+LIBS    += -lsqlite3
+
 HEADERS += \
     playergamehistory.h \
     player.h \

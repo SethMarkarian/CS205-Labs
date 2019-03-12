@@ -4,7 +4,8 @@
 #include "robotstui.h"
 #include "wormstui.h"
 #include "mainscreen.h"
-#include "altscreen.h"
+#include "../History/player.h"
+//#include "altscreen.h"
 
 int main()
 {
@@ -16,5 +17,7 @@ int main()
     ms.run();
     //AltScreen as;
     //as.run();
+    //Player *p = new Player(nullptr, "chloe", "dorward", "hewwo");
+    //std::cout << p->getFirstName();
     return 0;
 }

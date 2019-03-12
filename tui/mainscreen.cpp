@@ -63,6 +63,10 @@ void MainScreen::run()
     w.run();
     g.setFinalScore(w.getScore());
     p->addGame(&g);
+    std::string fn;
+    std::string ln;
+    std::string ad;
+    std::string len;
     // draw the current screen
     draw_screen();
     //AltScreen as;
@@ -86,8 +90,14 @@ void MainScreen::run()
             // Create a New Player, add to PlayerGameHistory
             // as.run();
             nps.run();
+            //fn = nps.get_f_vals()[0];
+            //ln = nps.get_f_vals()[1];
+            //ad = nps.get_f_vals()[2];
+            //len = "";
+            //len += nps.get_f_vals().size();
+            //p = new Player(nullptr, (char*)fn.c_str(), (char*)fn.c_str(), (char*)fn.c_str());
             draw_screen();
-            p = new Player(nullptr, nps.get_f_vals()[0], nps.get_f_vals()[1], nps.get_f_vals()[2]);
+            mvprintw(14, 4, "test");
             break;
         case 'b':
             eps.run();

@@ -106,6 +106,7 @@ void NewPlayerScreen::closing() {
     // Un post form and free the memory
     unpost_form(my_form);
     free_form(my_form);
+    f_vals.push_back("testing");
     // store contents of fields before they are freed
     for(int i = 0; field[i] != NULL;  i++) // last box of field is null
     {
