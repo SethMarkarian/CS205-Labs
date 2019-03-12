@@ -4,6 +4,13 @@
 #include <QMainWindow>
 
 #include "topthreeplayers.h"
+#include "topthreegames.h"
+#include "calculatedstatistics.h"
+#include "newplayer.h"
+#include <vector>
+
+#include "../History/player.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -14,7 +21,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    Player * p;
+    //Game * g;
     explicit MainWindow(QWidget *parent = nullptr);
+    void draw_board();
     ~MainWindow();
 
 private slots:

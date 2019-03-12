@@ -27,15 +27,24 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    topthreeplayers.cpp
+    topthreeplayers.cpp \
+    topthreegames.cpp \
+    calculatedstatistics.cpp \
+    newplayer.cpp
 
 HEADERS += \
         mainwindow.h \
-    topthreeplayers.h
+    topthreeplayers.h \
+    topthreegames.h \
+    calculatedstatistics.h \
+    newplayer.h
 
 FORMS += \
         mainwindow.ui \
-    topthreeplayers.ui
+    topthreeplayers.ui \
+    topthreegames.ui \
+    calculatedstatistics.ui \
+    newplayer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

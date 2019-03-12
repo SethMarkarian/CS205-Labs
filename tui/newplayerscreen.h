@@ -1,6 +1,5 @@
 #ifndef NEWPLAYERSCREEN_H
 #define NEWPLAYERSCREEN_H
-#include "altscreen.h"
 #include <string>
 #include <iostream>
 #include <form.h>
