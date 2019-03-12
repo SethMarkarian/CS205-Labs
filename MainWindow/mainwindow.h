@@ -21,8 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Player * p;
-    //Game * g;
+    Player * p = new Player();
     explicit MainWindow(QWidget *parent = nullptr);
     void draw_board();
     ~MainWindow();

@@ -6,7 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    p = new Player(nullptr, nullptr, nullptr, nullptr);
+    char * a;
+    char * b;
+    char * c;
+    p = new Player();
+    //p = new Player(a, b, c);
     //g = nullptr;
     draw_board();
 }

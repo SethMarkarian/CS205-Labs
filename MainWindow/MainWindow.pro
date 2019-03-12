@@ -30,21 +30,21 @@ SOURCES += \
     topthreeplayers.cpp \
     topthreegames.cpp \
     calculatedstatistics.cpp \
-    newplayer.cpp
+    newplayer.cpp \
 
 HEADERS += \
         mainwindow.h \
     topthreeplayers.h \
     topthreegames.h \
     calculatedstatistics.h \
-    newplayer.h
+    newplayer.h \
 
 FORMS += \
         mainwindow.ui \
     topthreeplayers.ui \
     topthreegames.ui \
     calculatedstatistics.ui \
-    newplayer.ui
+    newplayer.ui \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

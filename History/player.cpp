@@ -25,6 +25,14 @@ Player::Player(Game *g, char * f, char * l, char * a)
     gh = new GameHistory();
 }
 
+Player::Player(char * f, char * l, char * a)
+{
+    fn = f;
+    ln = l;
+    ad = a;
+    gh = new GameHistory();
+}
+
 //Destructor
 Player::~Player() {
 

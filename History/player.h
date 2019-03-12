@@ -50,6 +50,7 @@ public:
      * @param a Address
      */
     Player(Game *g, char * f, char * l, char * a);
+    Player(char * f, char * l, char * a);
 
     //Destructor
     ~Player();
