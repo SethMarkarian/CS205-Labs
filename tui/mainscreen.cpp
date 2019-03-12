@@ -2,7 +2,9 @@
 
 MainScreen::MainScreen()
 {
-    p = new Player(nullptr, nullptr, nullptr, nullptr);
+    curr_p = new Player(nullptr, "test", "player", "hewwo");
+    pgh = new PlayerGameHistory();
+    pgh->addPlayer(curr_p);
     nps = NewPlayerScreen();
     eps = ExistingPlayerScreen(pgh);
     ttps = TopThreePlayersScreen(pgh);
@@ -16,9 +18,9 @@ void MainScreen::draw_screen()
     clear();
     std::string first_line;
     first_line = "Current Player: ";
-    (p -> getFirstName() == nullptr) ? first_line += "No Player Selected" : first_line += p -> getFirstName();
+    (curr_p -> getFirstName() == nullptr) ? first_line += "No Player Selected" : first_line += curr_p -> getFirstName();
     first_line += ' ';
-    (p -> getLastName() == nullptr) ? first_line += "" : first_line += p -> getLastName();
+    (curr_p -> getLastName() == nullptr) ? first_line += "" : first_line += curr_p -> getLastName();
     // first_line += p -> getLastName();
     // print the state of the value object
     mvprintw(1, 4, first_line.c_str());
@@ -57,12 +59,12 @@ void MainScreen::run()
 
     // initialize the interaction loop to run
     bool continue_looping = true;
-    char * name = (char * )'w';
-    Game g = Game(p, name, 0);
-    WormsTUI w;
-    w.run();
-    g.setFinalScore(w.getScore());
-    p->addGame(&g);
+    //char * name = (char * )'w';
+    //Game g = Game(curr_p, name, 0);
+    //WormsTUI w;
+    //w.run();
+    //g.setFinalScore(w.getScore());
+    //curr_p->addGame(&g);
     std::string fn;
     std::string ln;
     std::string ad;
@@ -88,20 +90,17 @@ void MainScreen::run()
             // Create a New Player
             // Need Player FN, LN, Address
             // Create a New Player, add to PlayerGameHistory
-            // as.run();
             nps.run();
-            //fn = nps.get_f_vals()[0];
-            //ln = nps.get_f_vals()[1];
-            //ad = nps.get_f_vals()[2];
-            //len = "";
-            //len += nps.get_f_vals().size();
-            //p = new Player(nullptr, (char*)fn.c_str(), (char*)fn.c_str(), (char*)fn.c_str());
+            fn = nps.get_f_vals()[0];
+            ln = nps.get_f_vals()[1];
+            ad = nps.get_f_vals()[2];
+            curr_p = new Player(nullptr, (char*)nps.get_f_vals()[0], "d", "hello");//(char*)fn.c_str(), (char*)ln.c_str(), (char*)ad.c_str());
+            pgh->addPlayer(curr_p);
             draw_screen();
-            mvprintw(14, 4, "test");
             break;
         case 'b':
             eps.run();
-            p = eps.returnCurrentPlayer();
+            curr_p = eps.returnCurrentPlayer();
             draw_screen();
             break;
         case 'c':
@@ -117,30 +116,30 @@ void MainScreen::run()
             draw_screen();
             break;
         case 'f':{
-            if(p->getFirstName() != nullptr) {
+            if(curr_p->getFirstName() != nullptr) {
                 char * name = (char * )'r';
-                Game g = Game(p, name, 0);
+                Game g = Game(curr_p, name, 0);
                 RobotsTUI r;
                 r.run();
                 g.setFinalScore(r.getScore());
-                p->addGame(&g);
+                curr_p->addGame(&g);
             }char * name = (char * )'w';
-            Game g = Game(p, name, 0);
+            Game g = Game(curr_p, name, 0);
             WormsTUI w;
             w.run();
             g.setFinalScore(w.getScore());
-            p->addGame(&g);
+            curr_p->addGame(&g);
             draw_screen();
             break;
         }
         case 'g': {
-            if(p->getFirstName() != nullptr) {
+            if(curr_p->getFirstName() != nullptr) {
                 char * name = (char * )'w';
-                Game g = Game(p, name, 0);
+                Game g = Game(curr_p, name, 0);
                 WormsTUI w;
                 w.run();
                 g.setFinalScore(w.getScore());
-                p->addGame(&g);
+                curr_p->addGame(&g);
             }
             draw_screen();
             break;
@@ -160,5 +159,5 @@ void MainScreen::run()
 }
 
 void MainScreen::setPlayer(Player * pp) {
-    p = pp;
+    curr_p = pp;
 }

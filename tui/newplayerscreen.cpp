@@ -1,6 +1,26 @@
 #include "newplayerscreen.h"
 
 NewPlayerScreen::NewPlayerScreen() {
+    // initialize the screen
+    initscr();
+
+    // hide the cursor from view (comment this line out for debugging)
+    curs_set(0);
+
+    // disables line buffering and erase/kill character-processing
+    // (interrupt and flow control characters are unaffected),
+    // making characters typed by the  user  immediately
+    // available to the program
+    cbreak();
+
+    // control whether characters  typed  by  the user  are echoed
+    // by getch as they are typed
+    noecho();
+
+    // the user can press a function key (such as an arrow key) and
+    // getch returns a single value representing the  function  key,
+    // as in KEY_LEFT
+    keypad(stdscr, TRUE);
 
 }
 
@@ -106,11 +126,13 @@ void NewPlayerScreen::closing() {
     // Un post form and free the memory
     unpost_form(my_form);
     free_form(my_form);
-    f_vals.push_back("testing");
     // store contents of fields before they are freed
+    f_vals.push_back("testing");
     for(int i = 0; field[i] != NULL;  i++) // last box of field is null
     {
-        f_vals.push_back(field_buffer(field[i], 0));
+        std::string val = field_buffer(field[i], 0);
+        // something is going wrong here. we cannot convert properly. oh heck.
+        f_vals.push_back((char*)val.c_str());
         // free the field
         free_field(field[i]); // unknown if needs to be done after reading data from all fields
     }

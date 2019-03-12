@@ -23,7 +23,7 @@ protected:
 
     void draw_screen();
 public:
-    Player * p;
+    Player * curr_p;
     PlayerGameHistory * pgh;
     MainScreen();
     void run();
