@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dbtool.h"
 #include "dbtableex.h"
+#include "gamedbt.h"
 
 int main()
 {
@@ -43,6 +44,14 @@ int main()
     ext->select_all();
 
     delete ext;
+
+    GameDBT *heck = new GameDBT(dbtool, "TestGameTable");
+    heck->add_row(0, "wormy", 10, 0);
+    heck->add_row(1, "wormy", 6, 0);
+    heck->add_row(2, "robots", 15, 0);
+    heck->add_row(3, "robots", 17, 1);
+    heck->select_all();
+    delete heck;
 
     return 0;
 }
