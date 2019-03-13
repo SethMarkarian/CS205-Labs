@@ -61,7 +61,7 @@ public:
 
     // An overloaded method to generate a new
     // insert command for your child class.
-    virtual void store_add_row_sql();
+    virtual void store_template_sql();
 
     bool add_row(int id,
                  std::string item0, int   item1,

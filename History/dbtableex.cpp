@@ -31,7 +31,7 @@ DBTableEx::DBTableEx(DBTool     *db,
 {
 
     // Load SQL specific to child class.
-    store_add_row_sql();
+    store_template_sql();
     store_create_sql();
 
     // must build table sepparately so new
@@ -43,7 +43,7 @@ DBTableEx::~DBTableEx() {
 
 }
 
-void DBTableEx::store_add_row_sql() {
+void DBTableEx::store_template_sql() {
 
     sql_template =  "SELECT name ";
     sql_template += "FROM   sqlite_master ";
