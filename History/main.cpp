@@ -45,13 +45,13 @@ int main()
 
     delete ext;
 
-    GameDBT *heck = new GameDBT(dbtool, "TestGameTable");
+    /*GameDBT *heck = new GameDBT(dbtool, "TestGameTable");
     heck->add_row(0, "wormy", 10, 0);
     heck->add_row(1, "wormy", 6, 0);
     heck->add_row(2, "robots", 15, 0);
     heck->add_row(3, "robots", 17, 1);
     heck->select_all();
-    delete heck;
+    delete heck;*/
 
     return 0;
 }

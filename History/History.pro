@@ -12,10 +12,10 @@ SOURCES += \
     dbtable.cpp \
     dbtableex.cpp \
     dbtool.cpp \
-    gamedbt.cpp #\
-    #gamehistorydbt.cpp \
-    #playerdbt.cpp \
-    #playergamehistorydbt.cpp
+    gamedbt.cpp \
+    gamehistorydbt.cpp \
+    playerdbt.cpp \
+    playergamehistorydbt.cpp
 
 LIBS    += -lsqlite3
 
@@ -27,7 +27,7 @@ HEADERS += \
     dbtable.h \
     dbtableex.h \
     dbtool.h \
-    gamedbt.h #\
-    #gamehistorydbt.h \
-    #playerdbt.h \
-    #playergamehistorydbt.h
+    gamedbt.h \
+    gamehistorydbt.h \
+    playerdbt.h \
+    playergamehistorydbt.h

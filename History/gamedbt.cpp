@@ -37,7 +37,7 @@ void GameDBT::store_create_sql(){
     sql_create += "  id INT PRIMARY KEY NOT NULL, ";
     sql_create += "  gameName TEXT NOT NULL,";
     sql_create += "  finalScore INT  NOT NULL, ";
-    sql_create += "  playerID INT  NOT NULL,";
+    sql_create += "  playerID INT  NOT NULL";
     sql_create += " );";
 }
 
@@ -67,7 +67,7 @@ bool GameDBT::add_row(int id, std::string gameName, int finalScore, int playerID
 
     sprintf (tempval, "%d", playerID);
     sql_add_row += tempval;
-    sql_add_row += ", ";
+    // sql_add_row += ", ";
 
     sql_add_row += " );";
 
@@ -123,7 +123,8 @@ bool GameDBT::select_all() {
     return retCode;
 }
 
-
+/* Errors; these were defined in TBTableEx, cannot redfine */
+/*
 int cb_add_row(void  *data,
                int    argc,
                char **argv,
@@ -190,4 +191,4 @@ int cb_select_all(void  *data,
     }
 
     return 0;
-}
+} */
