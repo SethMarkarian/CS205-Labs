@@ -8,7 +8,7 @@ GameDBT::GameDBT()
 GameDBT::GameDBT(DBTool* db, std::string name) : DBTable (db, name)
 {
     // Load SQL specific to child class.
-    store_add_row_sql();
+    // this stores a string used in create() in build_table in DBTable
     store_create_sql();
 
     // must build table sepparately so new
@@ -20,12 +20,16 @@ GameDBT::~GameDBT(){
 
 }
 
-void GameDBT::store_add_row_sql(){
-    sql_template =  "SELECT name ";
-    sql_template += "FROM   sqlite_master ";
-    sql_template += "WHERE";
-    sql_template += "    type = \"table\"";
-    sql_template += ";";
+void GameDBT::print_game()
+{
+    for(int i = 0; i < curr_game.size(); i++){
+        std::cout << curr_game[i] << " ";
+    }
+}
+
+void GameDBT::set_game(std::vector<std::string> now_game)
+{
+    curr_game = now_game;
 }
 
 void GameDBT::store_create_sql(){
@@ -93,6 +97,42 @@ bool GameDBT::add_row(int id, std::string gameName, int finalScore, int playerID
     return retCode;
 }
 
+std::vector<std::string> GameDBT::ret_game(int iD)
+{
+    get_row(iD);
+    return curr_game;
+}
+
+bool GameDBT::get_row(int iD)
+{
+
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_get_row = "SELECT * FROM ";
+    sql_get_row += table_name;
+    sql_get_row += " WHERE id=";
+    sql_get_row += std::to_string(iD);
+    sql_get_row += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_get_row.c_str(),
+                           cb_ret_game,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+    return retCode;
+}
 
 bool GameDBT::select_all() {
 
@@ -123,9 +163,7 @@ bool GameDBT::select_all() {
     return retCode;
 }
 
-/* Errors; these were defined in TBTableEx, cannot redfine */
-/*
-int cb_add_row(void  *data,
+int cb_ret_game (void  *data,
                int    argc,
                char **argv,
                char **azColName)
@@ -133,7 +171,7 @@ int cb_add_row(void  *data,
 
 
 
-    std::cerr << "cb_add_row being called\n";
+    std::cerr << "cb_ret_game being called\n";
 
     if(argc < 1) {
         std::cerr << "No data presented to callback "
@@ -145,39 +183,14 @@ int cb_add_row(void  *data,
 
     GameDBT *obj = (GameDBT *) data;
 
-    std::cout << "------------------------------\n";
-    std::cout << obj->get_name()
-              << std::endl;
+    std::vector<std::string> temp;
 
-    for(i = 0; i < argc; i++){
-        std::cout << azColName[i]
-                  << " = "
-                  <<  (argv[i] ? argv[i] : "NULL")
-                  << std::endl;
+    for(i = 0; i < argc; i++)
+    {
+        temp.push_back(argv[i] ? argv[i] : "NULL");
     }
 
-    return 0;
-}
-
-int cb_select_all(void  *data,
-                  int    argc,
-                  char **argv,
-                  char **azColName)
-{
-
-
-
-    std::cerr << "cb_select_all being called\n";
-
-    if(argc < 1) {
-        std::cerr << "No data presented to callback "
-                  << "argc = " << argc
-                  << std::endl;
-    }
-
-    int i;
-
-    GameDBT *obj = (GameDBT *) data;
+    obj->set_game(temp);
 
     std::cout << "------------------------------\n";
     std::cout << obj->get_name()
@@ -189,6 +202,5 @@ int cb_select_all(void  *data,
                   <<  (argv[i] ? std::string(argv[i]) : "NULL")
                   << std::endl;
     }
-
     return 0;
-} */
+}

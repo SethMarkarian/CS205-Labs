@@ -25,9 +25,30 @@ Game::Game(Player *p, char * n, int f)
     fs = f;
 }
 
+Game::Game(Player *p, int iD, DBTool * dbtpass)
+{
+    GameDBT * gdbt = new GameDBT(dbtpass, "TestGameTable");
+    std::vector<std::string> vals = gdbt->ret_game(iD);
+    id = iD;
+    pl = p;
+    name = (char*)vals[1].c_str();
+    fs = atoi(vals[2].c_str());
+    delete gdbt;
+}
+
 //Destructor
 Game::~Game() {
 
+}
+
+void Game::print_game()
+{
+    std::cout << name;
+}
+
+int Game::getID()
+{
+    return id;
 }
 
 /**

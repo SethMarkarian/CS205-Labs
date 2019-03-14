@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include "player.h"
+#include "gamedbt.h"
+#include "dbtool.h"
 
 class Player;
 
@@ -21,6 +23,8 @@ class Game
      * @brief fs Final Score
      */
     int fs; //final score
+
+    int id;
 public:
 
     /**
@@ -35,6 +39,8 @@ public:
      * @param f final score
      */
     Game(Player *p, char * n, int f);
+
+    Game(Player *p, int iD, DBTool * dbtpass);
 
 
     ~Game(); //Destructor
@@ -58,6 +64,10 @@ public:
     int getFinalScore();
 
     void setFinalScore(int i);
+
+    int getID();
+
+    void print_game();
 };
 
 #endif // GAME_H

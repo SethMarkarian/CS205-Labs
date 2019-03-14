@@ -14,6 +14,14 @@ Player::Player()
     // need to have global DBT and a constructor based on adding a new row
 }
 
+Player::Player(int iD, DBTool * dbt_pass)
+{
+    pdbt = new PlayerDBT(dbtool, "PlayerTable");
+    // pdbt read from row and return data??
+    // possibly have it return a vector of strings??
+    // we gotta set the attributes
+}
+
 /**
  * @brief Player Constructor to fill instance variables
  * @param g Game
