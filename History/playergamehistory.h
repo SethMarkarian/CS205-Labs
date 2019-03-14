@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "player.h"
+#include "game.h"
 
 
 class PlayerGameHistory

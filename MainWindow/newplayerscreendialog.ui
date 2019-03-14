@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NewPlayer</class>
- <widget class="QWidget" name="NewPlayer">
+ <class>NewPlayerScreenDialog</class>
+ <widget class="QDialog" name="NewPlayerScreenDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,87 +11,87 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="Header">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>30</y>
-     <width>121</width>
-     <height>20</height>
+     <x>20</x>
+     <y>50</y>
+     <width>91</width>
+     <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>Create New Player</string>
+    <string>First Name:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="FirstName">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>100</y>
-     <width>81</width>
-     <height>16</height>
+     <x>20</x>
+     <y>90</y>
+     <width>91</width>
+     <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>First name:</string>
+    <string>Last Name:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="FirstNameEdit">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>100</y>
-     <width>113</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="LastName">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>160</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Last name:</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="LastNameEdit">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>160</y>
-     <width>113</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Address">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>220</y>
-     <width>55</width>
-     <height>16</height>
+     <x>20</x>
+     <y>130</y>
+     <width>64</width>
+     <height>17</height>
     </rect>
    </property>
    <property name="text">
     <string>Address:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="AddressEdit">
+  <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>220</y>
+     <x>143</x>
+     <y>20</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>New Player</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="FirstName">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>50</y>
      <width>113</width>
-     <height>24</height>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LastName">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>90</y>
+     <width>113</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Address">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>130</y>
+     <width>113</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -99,8 +99,8 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>260</y>
-     <width>80</width>
+     <y>250</y>
+     <width>83</width>
      <height>25</height>
     </rect>
    </property>

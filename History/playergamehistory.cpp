@@ -1,4 +1,5 @@
 #include "playergamehistory.h"
+#include "game.h"
 
 /**
  * @brief PlayerGameHistory Empty Constructor

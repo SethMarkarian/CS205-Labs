@@ -30,21 +30,32 @@ SOURCES += \
     topthreeplayers.cpp \
     topthreegames.cpp \
     calculatedstatistics.cpp \
-    newplayer.cpp \
+    ../History/player.cpp \
+    ../History/game.cpp \
+    ../History/gamehistory.cpp \
+    newplayerscreendialog.cpp \
+    existingplayerscreendialog.cpp \
+    ../History/playergamehistory.cpp
 
 HEADERS += \
         mainwindow.h \
     topthreeplayers.h \
     topthreegames.h \
     calculatedstatistics.h \
-    newplayer.h \
+    ../History/player.h \
+    ../History/game.h \
+    newplayerscreendialog.h \
+    existingplayerscreendialog.h \
+    ../History/gamehistory.h \
+    ../History/playergamehistory.h
 
 FORMS += \
         mainwindow.ui \
     topthreeplayers.ui \
     topthreegames.ui \
     calculatedstatistics.ui \
-    newplayer.ui \
+    newplayerscreendialog.ui \
+    existingplayerscreendialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

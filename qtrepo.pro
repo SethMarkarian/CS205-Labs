@@ -7,7 +7,7 @@ SUBDIRS += \
     #engine_tests \
     #ncurses_example \
     tui \
-    #MainWindow \
+    MainWindow \
     #TinyGame    \
     #TextFinder \
     #RobotsGUI #\

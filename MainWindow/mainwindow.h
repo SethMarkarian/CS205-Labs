@@ -6,10 +6,12 @@
 #include "topthreeplayers.h"
 #include "topthreegames.h"
 #include "calculatedstatistics.h"
-#include "newplayer.h"
+#include "newplayerscreendialog.h"
+#include "existingplayerscreendialog.h"
 #include <vector>
 
 #include "../History/player.h"
+#include <iostream>
 
 
 namespace Ui {
@@ -21,7 +23,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Player * p = new Player();
+    Player * p;
+    PlayerGameHistory * pgh;
     explicit MainWindow(QWidget *parent = nullptr);
     void draw_board();
     ~MainWindow();

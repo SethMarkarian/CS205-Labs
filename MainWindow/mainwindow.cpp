@@ -6,12 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    char * a;
-    char * b;
-    char * c;
-    p = new Player();
-    //p = new Player(a, b, c);
-    //g = nullptr;
+    p = new Player(nullptr, nullptr, nullptr, nullptr);
     draw_board();
 }
 
@@ -45,16 +40,27 @@ void MainWindow::on_actionCalculated_Statistics_triggered()
 
 void MainWindow::on_actionNew_Player_triggered()
 {
-    NewPlayer *np = new NewPlayer();
-    np->show();
-    std::vector<char * > player = np->getNewPlayer();
-    //p = new Player(g, player[0], player[1], player[2]);
+    NewPlayerScreenDialog *npsd = new NewPlayerScreenDialog;
+    //np->show();
+    if(npsd->exec()) {
+        npsd->show();
+        p = npsd->getNewPlayer();
+
+    }
+    //p = np->getNewPlayer();
+    //p = new Player(nullptr, "hi", "bye", "hi");
     draw_board();
 }
 
 void MainWindow::on_actionSelect_Existing_Player_triggered()
 {
-
+    ExistingPlayerScreenDialog * epsd = new ExistingPlayerScreenDialog;
+    epsd->setPGH(pgh);
+    if(epsd->exec()) {
+        epsd->show();
+        p = epsd->getPlayer();
+    }
+    draw_board();
 }
 
 void MainWindow::draw_board() {
@@ -71,8 +77,3 @@ void MainWindow::draw_board() {
     ui->PlayerName->clear();
     ui->PlayerName->setText(s);
 }
-
-//HELPFUL STUFF
-//QWidget *wdg = new QWidget;
-//wdg->show();
-//hide();//this will disappear main window
