@@ -2,6 +2,9 @@
 #define TOPTHREEPLAYERS_H
 
 #include <QWidget>
+#include <vector>
+#include "../History/player.h"
+#include "../History/playergamehistory.h"
 
 namespace Ui {
 class TopThreePlayers;
@@ -10,9 +13,12 @@ class TopThreePlayers;
 class TopThreePlayers : public QWidget
 {
     Q_OBJECT
+    PlayerGameHistory * pgh;
 
 public:
     explicit TopThreePlayers(QWidget *parent = nullptr);
+    void draw_screen();
+    void getPGH(PlayerGameHistory * p);
     ~TopThreePlayers();
 
 private:

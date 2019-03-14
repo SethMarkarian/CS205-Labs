@@ -3,16 +3,16 @@ TEMPLATE = subdirs
 SUBDIRS += \
     #lab \
     #unittest \
-    #Engines \
+    Engines \
     #engine_tests \
     #ncurses_example \
     #tui \
     MainWindow \
     #TinyGame    \
     #TextFinder \
-    #RobotsGUI #\
-    #WormGUI \
-    History #\
+    #RobotsGUI \
+    #WormGUI #\
+    #History #\
     #HistoryUnitTests
 
 HEADERS += \

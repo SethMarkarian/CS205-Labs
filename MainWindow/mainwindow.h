@@ -11,6 +11,8 @@
 #include <vector>
 
 #include "../History/player.h"
+#include "../RobotsGUI/robotsgui.h"
+#include "../WormGUI/wormgui.h"
 #include <iostream>
 
 
@@ -41,6 +43,10 @@ private slots:
     void on_actionNew_Player_triggered();
 
     void on_actionSelect_Existing_Player_triggered();
+
+    void on_RobotsButton_clicked();
+
+    void on_WormsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

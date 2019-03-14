@@ -35,7 +35,12 @@ SOURCES += \
     ../History/gamehistory.cpp \
     newplayerscreendialog.cpp \
     existingplayerscreendialog.cpp \
-    ../History/playergamehistory.cpp
+    ../History/playergamehistory.cpp \
+    ../RobotsGUI/robotsgui.cpp \
+    ../WormGUI/wormgui.cpp \
+    ../Engines/robots.cpp \
+    ../Engines/worm.cpp \
+    ../Engines/engine.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +52,13 @@ HEADERS += \
     newplayerscreendialog.h \
     existingplayerscreendialog.h \
     ../History/gamehistory.h \
-    ../History/playergamehistory.h
+    ../History/playergamehistory.h \
+    ../RobotsGUI/robotsgui.h \
+    ../WormGUI/wormgui.h \
+    ../Engines/robots.h \
+    ../Engines/worm.h \
+    ../Engines/engine.h
+
 
 FORMS += \
         mainwindow.ui \
@@ -55,7 +66,9 @@ FORMS += \
     topthreegames.ui \
     calculatedstatistics.ui \
     newplayerscreendialog.ui \
-    existingplayerscreendialog.ui
+    existingplayerscreendialog.ui \
+    #../RobotsGUI/robotsgui.ui \
+    #../WormGUI/wormgui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
