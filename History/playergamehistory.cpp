@@ -5,11 +5,16 @@
  */
 PlayerGameHistory::PlayerGameHistory()
 {
-
+    // create PGHDBT
+    // initialize vectors
+    // Load in list of players from text
+    // fill in null values to games vector
+    // start creating players based on ID number
 }
 
 //Destructor
 PlayerGameHistory::~PlayerGameHistory() {
+    // call delete to global DBT's
 
 }
 

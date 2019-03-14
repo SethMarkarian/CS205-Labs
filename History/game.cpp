@@ -5,7 +5,11 @@
  */
 Game::Game()
 {
-
+    // need to have a constructor based on ID number and pointer passed in
+    // check if GDBT exists/ make one
+    // load in data from tabled based on ID number; load in attributes
+    // I think that's it bro
+    // need to have constructor based on new row
 }
 
 /**

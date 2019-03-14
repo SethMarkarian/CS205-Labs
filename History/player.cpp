@@ -6,7 +6,12 @@
  */
 Player::Player()
 {
-
+    // need to have a constructor based on ID number
+    // check if PDBT exists/ make one
+    // load in data from table based on ID number; attributes here
+    // create a new Game based on its id number
+    // create a new GameHistory based on its id number, pass pointer
+    // need to have global DBT and a constructor based on adding a new row
 }
 
 /**
