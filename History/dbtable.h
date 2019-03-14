@@ -72,6 +72,8 @@ protected:
 
     // default sql for determining number of rows in the table
     std::string sql_size;
+
+    // sql for adding a row
     std::string sql_add_row;
 
     // internal flag for storing the result of the last exists request

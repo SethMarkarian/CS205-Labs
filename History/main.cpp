@@ -22,10 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "dbtool.h"
 #include "dbtableex.h"
 #include "gamedbt.h"
+#include "player.h"
+#include "game.h"
 
 int main()
 {
-
     // generate database object
     DBTool *dbtool = new DBTool("TestTableDB");
 
@@ -51,10 +52,13 @@ int main()
     heck->add_row(2, "robots", 15, 0);
     heck->add_row(3, "robots", 17, 1);
     heck->select_all();
-    heck->dbtemplate(); // callback function for template prints nothing
-    // unsure what this does???
-    // I think it's literally just a "template" for what we need to do :)))
+    heck->get_row(1);
+    heck->print_game();
     delete heck;
+
+    Game* g = new Game(nullptr, 2, dbtool);
+    g->print_game();
+    delete g;
 
     return 0;
 }

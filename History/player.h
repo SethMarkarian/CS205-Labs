@@ -3,6 +3,9 @@
 
 #include "game.h"
 #include "gamehistory.h"
+#include "playerdbt.h"
+#include "dbtool.h"
+#include "dbtable.h"
 
 class Game; // forward declaration when game.h is included
 
@@ -35,6 +38,11 @@ class Player
      */
     GameHistory* gh;
 
+    DBTool * dbtool;
+    // BIG ISSUE: It's coming up as unknown type. Unsure why. It works in every other class it's included in!
+
+    PlayerDBT* pdbt;
+
 public:
 
     /**
@@ -51,6 +59,7 @@ public:
      */
     Player(Game *g, char * f, char * l, char * a);
     Player(char * f, char * l, char * a);
+    Player(int iD, DBTool * dbt_pass);
 
     //Destructor
     ~Player();

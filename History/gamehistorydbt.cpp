@@ -8,7 +8,7 @@ GameHistoryDBT::GameHistoryDBT()
 GameHistoryDBT::GameHistoryDBT(DBTool* db, std::string name) : DBTable (db, name)
 {
     // Load SQL specific to child class.
-    store_add_row_sql();
+    store_template_sql();
     store_create_sql();
 
     // must build table sepparately so new
@@ -20,7 +20,7 @@ GameHistoryDBT::~GameHistoryDBT(){
 
 }
 
-void GameHistoryDBT::store_add_row_sql(){
+void GameHistoryDBT::store_template_sql(){
     sql_template =  "SELECT name ";
     sql_template += "FROM   sqlite_master ";
     sql_template += "WHERE";
