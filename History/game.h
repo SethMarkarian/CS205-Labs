@@ -68,6 +68,8 @@ public:
     int getID();
 
     void print_game();
+
+    void save(DBTool *dbt_passed);
 };
 
 #endif // GAME_H

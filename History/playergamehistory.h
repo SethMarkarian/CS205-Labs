@@ -4,7 +4,16 @@
 #include <vector>
 #include "player.h"
 #include "game.h"
+#include <cstring>
+#include "playergamehistorydbt.h"
+#include "gamehistorydbt.h"
+#include "gamedbt.h"
+#include "playerdbt.h"
+#include "dbtool.h"
 
+class Player;
+
+class Game;
 
 class PlayerGameHistory
 {
@@ -17,12 +26,18 @@ class PlayerGameHistory
      * @brief games Vector of games
      */
     std::vector<Game *> games;
+
+    std::vector<std::string> string_to_vector(std::string str);
+    std::string DBN;
+    std::string vec_to_string(std::vector<int> ints);
 public:
 
     /**
      * @brief PlayerGameHistory Empty Constructor
      */
     PlayerGameHistory();
+
+    PlayerGameHistory(std::string DBName);
 
     //Destructor
     ~PlayerGameHistory();
@@ -83,6 +98,8 @@ public:
     std::vector<Player *> top_3();
     std::vector<Game *> top_3_games();
     std::vector<Player *> retPlayers();
+
+    void insert_game(Game* g, int i);
 };
 
 #endif // PLAYERGAMEHISTORY_H

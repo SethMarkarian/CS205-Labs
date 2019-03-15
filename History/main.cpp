@@ -46,17 +46,16 @@ int main()
 
     delete ext;
 
-    GameDBT *heck = new GameDBT(dbtool, "TestGameTable");
+    GameDBT *heck = new GameDBT(dbtool, "GTable");
     heck->add_row(0, "wormy", 10, 0);
     heck->add_row(1, "wormy", 6, 0);
     heck->add_row(2, "robots", 15, 0);
     heck->add_row(3, "robots", 17, 1);
     heck->select_all();
-    heck->get_row(1);
-    heck->print_game();
+    // heck->del_rows();
     delete heck;
 
-    Game* g = new Game(nullptr, 2, dbtool);
+    Game* g = new Game(nullptr, 2, dbtool); // it loads! it works!
     g->print_game();
     delete g;
 

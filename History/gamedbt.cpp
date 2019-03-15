@@ -10,6 +10,7 @@ GameDBT::GameDBT(DBTool* db, std::string name) : DBTable (db, name)
     // Load SQL specific to child class.
     // this stores a string used in create() in build_table in DBTable
     store_create_sql();
+    store_template_sql();
 
     // must build table sepparately so new
     // sql can be properly registered
@@ -32,6 +33,10 @@ void GameDBT::set_game(std::vector<std::string> now_game)
     curr_game = now_game;
 }
 
+void GameDBT::set_num_rows(int n){
+    n_rows = n;
+}
+
 void GameDBT::store_create_sql(){
     //std::cerr << "calling store_create_sql from DBTableEx\n";
 
@@ -43,6 +48,47 @@ void GameDBT::store_create_sql(){
     sql_create += "  finalScore INT  NOT NULL, ";
     sql_create += "  playerID INT  NOT NULL";
     sql_create += " );";
+}
+
+void GameDBT::store_template_sql(){
+    sql_template =  "SELECT name ";
+    sql_template += "FROM   sqlite_master ";
+    sql_template += "WHERE";
+    sql_template += "    type = \"table\"";
+    sql_template += ";";
+}
+
+int GameDBT::num_rows(){
+    get_num_rows();
+    return n_rows;
+}
+
+bool GameDBT::del_rows(){
+
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_del_rows = "DELETE FROM ";
+    sql_del_rows += table_name;
+    sql_del_rows += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_del_rows.c_str(),
+                           cb_del_rows,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+    return retCode;
 }
 
 bool GameDBT::add_row(int id, std::string gameName, int finalScore, int playerID)
@@ -101,6 +147,34 @@ std::vector<std::string> GameDBT::ret_game(int iD)
 {
     get_row(iD);
     return curr_game;
+}
+
+bool GameDBT::get_num_rows(){
+
+    int   retCode = 0;
+    char *zErrMsg = 0;
+
+    sql_get_num_rows = "SELECT count(*) FROM ";
+    sql_get_num_rows += table_name;
+    sql_get_num_rows += ";";
+
+    retCode = sqlite3_exec(curr_db->db_ref(),
+                           sql_get_num_rows.c_str(),
+                           cb_g_num_rows,
+                           this,
+                           &zErrMsg          );
+
+    if( retCode != SQLITE_OK ){
+
+        std::cerr << table_name
+                  << " template ::"
+                  << std::endl
+                  << "SQL error: "
+                  << zErrMsg;
+
+        sqlite3_free(zErrMsg);
+    }
+    return retCode;
 }
 
 bool GameDBT::get_row(int iD)
@@ -202,5 +276,52 @@ int cb_ret_game (void  *data,
                   <<  (argv[i] ? std::string(argv[i]) : "NULL")
                   << std::endl;
     }
+    return 0;
+}
+
+int cb_g_num_rows (void  *data,
+               int    argc,
+               char **argv,
+               char **azColName)
+{
+    std::cerr << "cb_g_num_rows being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
+    GameDBT *obj = (GameDBT *) data;
+
+    int temp = atoi(argv[0]);
+
+    obj->set_num_rows(temp);
+
+    std::cout << "------------------------------\n";
+    std::cout << obj->get_name()
+              << std::endl;
+
+    for(int i = 0; i < argc; i++){
+        std::cout << azColName[i]
+                  << " = "
+                  <<  (argv[i] ? std::string(argv[i]) : "NULL")
+                  << std::endl;
+    }
+    return 0;
+}
+int cb_del_rows (void  *data,
+               int    argc,
+               char **argv,
+               char **azColName)
+{
+    std::cerr << "cb_del_rows being called\n";
+
+    if(argc < 1) {
+        std::cerr << "No data presented to callback "
+                  << "argc = " << argc
+                  << std::endl;
+    }
+
     return 0;
 }

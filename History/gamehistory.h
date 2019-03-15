@@ -3,11 +3,18 @@
 
 #include "player.h"
 #include "game.h"
+#include "dbtool.h"
+#include "dbtable.h"
+#include "gamehistorydbt.h"
 #include <vector>
+#include <cstring>
+#include "playergamehistory.h"
 
 class Game;
 
 class Player;
+
+class PlayerGameHistory;
 
 class GameHistory
 {
@@ -21,12 +28,17 @@ class GameHistory
      */
     std::vector<Game*> games;
 
+    int id;
+
+    std::vector<std::string> string_to_vector(std::string str);
 public:
 
     /**
      * @brief GameHistory Empty Constuctor
      */
     GameHistory();
+    GameHistory(Player * pl);
+    GameHistory(int iD, DBTool * dbt_pass, Player* p, PlayerGameHistory * pgh);
 
     /**
      * @brief addGame Adds game to vector fo games
@@ -53,6 +65,11 @@ public:
      */
     Game* getGame(int i);
 
+    int getID();
+
+    Game * last_game();
+
+    void save(DBTool * dbt_passed);
 
 };
 

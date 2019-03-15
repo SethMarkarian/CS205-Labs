@@ -15,12 +15,19 @@ Player::Player()
     // need to have global DBT and a constructor based on adding a new row
 }
 
-Player::Player(int iD, DBTool * dbt_pass)
+Player::Player(int iD, DBTool * dbt_pass, PlayerGameHistory * pgh)
 {
-    pdbt = new PlayerDBT(dbtool, "PlayerTable");
-    // pdbt read from row and return data??
-    // possibly have it return a vector of strings??
-    // we gotta set the attributes
+    id = iD;
+    PlayerDBT * pdbt = new PlayerDBT(dbtool, "PTable");
+    std::vector<std::string> vals = pdbt->ret_p(id);
+    fn = (char*) vals[1].c_str();
+    ln = (char*) vals[2].c_str();
+    ad = (char*) vals[3].c_str();
+    // need to make the game history
+    gh = new GameHistory(atoi(vals[5].c_str()), dbt_pass, this, pgh);
+    // then, from game history, return the most recent game
+    ga = gh->last_game();
+    delete pdbt;
 }
 
 /**
@@ -36,7 +43,8 @@ Player::Player(Game *g, char * f, char * l, char * a)
     fn = f;
     ln = l;
     ad = a;
-    gh = new GameHistory();
+    gh = new GameHistory(this);
+    id = -1; // this will be changed when saving
 }
 
 Player::Player(char * f, char * l, char * a)
@@ -44,7 +52,8 @@ Player::Player(char * f, char * l, char * a)
     fn = f;
     ln = l;
     ad = a;
-    gh = new GameHistory();
+    gh = new GameHistory(this);
+    id = -1;
 }
 
 //Destructor
@@ -102,4 +111,19 @@ void Player::addToGameHistory(Game * g) {
 
 void Player::addGame(Game * g) {
     ga = g;
+}
+
+int Player::getID(){
+    return id;
+}
+
+void Player::save(DBTool *dbt_passed){
+    PlayerDBT * pdbt = new PlayerDBT(dbt_passed, "PTable");
+    if(id == -1)
+    {
+        id = pdbt->num_rows();
+    }
+    pdbt->add_row(id, fn, ln, ad, ga->getID(), gh->getID());
+    gh->save(dbt_passed);
+    delete pdbt;
 }

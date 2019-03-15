@@ -20,7 +20,10 @@ protected:
 
     std::string sql_select_all;
     std::string sql_get_row;
+    std::string sql_get_num_rows;
+    std::string sql_del_rows;
     std::vector<std::string> curr_game;
+    int n_rows;
 
 public:
     GameDBT();
@@ -31,6 +34,10 @@ public:
     // An overloaded method to generate a new
     // create command for your child class.
     void store_create_sql();
+
+    // An overloaded method to generate a new
+    // insert command for your child class.
+    virtual void store_template_sql();
 
     bool add_row(int id, std::string gameName, int finalScore, int playerID);
 
@@ -43,6 +50,14 @@ public:
     std::vector<std::string> ret_game(int iD);
 
     void print_game();
+
+    int num_rows();
+
+    bool get_num_rows();
+
+    void set_num_rows(int n);
+
+    bool del_rows();
 };
 
 
@@ -64,6 +79,20 @@ int cb_select_all(void  *data,
 // This is a callback function that is sent to the library and used
 // to parse the sql request being sent to the database.
 int cb_ret_game(void  *data,
+                  int    argc,
+                  char **argv,
+                  char **azColName);
+
+// This is a callback function that is sent to the library and used
+// to parse the sql request being sent to the database.
+int cb_g_num_rows(void  *data,
+                  int    argc,
+                  char **argv,
+                  char **azColName);
+
+// This is a callback function that is sent to the library and used
+// to parse the sql request being sent to the database.
+int cb_del_rows(void  *data,
                   int    argc,
                   char **argv,
                   char **azColName);

@@ -1,22 +1,76 @@
 #include "playergamehistory.h"
-#include "game.h"
 
 /**
  * @brief PlayerGameHistory Empty Constructor
  */
 PlayerGameHistory::PlayerGameHistory()
 {
+
+}
+
+PlayerGameHistory::PlayerGameHistory(std::string DBName)
+{
+    // create DBTool
+    DBN = DBName;
+    DBTool * dbt = new DBTool((char *)DBName.c_str());
     // create PGHDBT
+    PlayerGameHistoryDBT * pghdbt = new PlayerGameHistoryDBT(dbt, "PGHTable");
     // initialize vectors
-    // Load in list of players from text
-    // fill in null values to games vector
-    // start creating players based on ID number
+    std::vector<std::string> col_strings = pghdbt->ret_pgh(0);
+    std::vector<std::string> player_strings = string_to_vector(col_strings [1]);
+    std::vector<std::string> game_strings = string_to_vector(col_strings[2]);
+    // fill in the games vector with nullptrs so it is the right size
+    for(int i = 0; i < game_strings.size(); i++){
+        games.push_back(nullptr);
+    }
+    // create players based on ID numbers
+    for(int i = 0; i < player_strings.size(); i++){
+        int id_n = atoi(player_strings[i].c_str());
+        Player* p = new Player(id_n, dbt, this);
+        players.push_back(p);
+    }
+    // delete stuff
+    delete pghdbt;
+    delete dbt;
 }
 
 //Destructor
 PlayerGameHistory::~PlayerGameHistory() {
-    // call delete to global DBT's
-
+    // need all the other objects to save :)
+    DBTool * dbt = new DBTool((char *) DBN.c_str());
+    PlayerGameHistoryDBT * pghdbt = new PlayerGameHistoryDBT(dbt, "PGHTable");
+    pghdbt->del_rows();
+    GameDBT * gdbt = new GameDBT(dbt, "GTable");
+    gdbt->del_rows();
+    delete gdbt;
+    PlayerDBT * pdbt = new PlayerDBT(dbt, "PTable");
+    pdbt->del_rows();
+    delete pdbt;
+    GameHistoryDBT * ghdbt = new GameHistoryDBT(dbt, "GHTable");
+    ghdbt->del_rows();
+    delete ghdbt;
+    std::string pl_ids;
+    std::string g_ids;
+    if(players.size() > 0)
+    {
+        pl_ids = std::to_string(players[0]->getID());
+    }
+    for(int i = 1; i < players.size(); i++){
+        players[i]->save(dbt);
+        pl_ids += ",";
+        pl_ids += std::to_string(players[i]->getID());
+    }
+    if(games.size() > 0)
+    {
+        g_ids = std::to_string(games[0]->getID());
+    }
+    for(int i = 1; i < games.size(); i++){
+        g_ids += ",";
+        g_ids += std::to_string(games[i]->getID());
+    }
+    pghdbt->add_row(0, pl_ids, g_ids);
+    delete pghdbt;
+    delete dbt;
 }
 
 /**
@@ -151,4 +205,39 @@ std::vector<Game *> PlayerGameHistory::top_3_games()
 std::vector<Player *> PlayerGameHistory::retPlayers()
 {
     return players;
+}
+
+std::vector<std::string> PlayerGameHistory::string_to_vector(std::string str){
+    std::vector<std::string> temp;
+    char * checker;
+    checker = strchr((char*)str.c_str(), ',');
+    if(checker != NULL)
+    {
+        char * curr = strtok((char*)str.c_str(), ",");
+        temp.push_back(curr);
+    }
+    while(checker != NULL)
+    {
+        char * curr = strtok(NULL, ",");
+        temp.push_back(curr);
+    }
+    return temp;
+}
+
+void PlayerGameHistory::insert_game(Game *g, int i){
+    std::vector<Game *>::iterator it = games.begin();
+    games.insert(it + i, g);
+}
+
+std::string PlayerGameHistory::vec_to_string(std::vector<int> ints){
+    std::string temp;
+    if(ints.size() > 0)
+    {
+        temp += std::to_string(ints[0]);
+    }
+    for(int i = 1; i < ints.size(); i++){
+        temp += ",";
+        temp += std::to_string(ints[i]);
+    }
+    return temp;
 }

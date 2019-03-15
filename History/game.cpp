@@ -23,11 +23,12 @@ Game::Game(Player *p, char * n, int f)
     pl = p;
     name = n;
     fs = f;
+    id = -1; // going to fix in saving :)
 }
 
 Game::Game(Player *p, int iD, DBTool * dbtpass)
 {
-    GameDBT * gdbt = new GameDBT(dbtpass, "TestGameTable");
+    GameDBT * gdbt = new GameDBT(dbtpass, "GTable");
     std::vector<std::string> vals = gdbt->ret_game(iD);
     id = iD;
     pl = p;
@@ -77,4 +78,14 @@ int Game::getFinalScore() {
 
 void Game::setFinalScore(int i) {
     fs = i;
+}
+
+void Game::save(DBTool *dbt_passed){
+    GameDBT * gdbt = new GameDBT(dbt_passed, "GTable");
+    if(id == -1)
+    {
+        id = gdbt->num_rows();
+    }
+    gdbt->add_row(id, name, fs, pl->getID());
+    delete gdbt;
 }
