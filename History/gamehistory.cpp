@@ -34,6 +34,12 @@ GameHistory::GameHistory(int iD, DBTool * dbt_pass, Player * p, PlayerGameHistor
     delete ghdbt;
 }
 
+GameHistory::GameHistory(Player * p)
+{
+    pl = p;
+    id = -1;
+}
+
 /**
  * @brief addGame Adds game to vector fo games
  * @param g Game to be added

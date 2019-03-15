@@ -118,7 +118,8 @@ int Player::getID(){
 
 void Player::save(DBTool *dbt_passed){
     // create pdbt
-    PlayerDBT * pdbt = new PlayerDBT(dbt_passed, "PTable");
+    std::string str = "PTable";
+    PlayerDBT * pdbt = new PlayerDBT(dbt_passed, str);
     if(id == -1)
     {
         // set id if this was not loaded from the table before

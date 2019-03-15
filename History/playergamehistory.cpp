@@ -12,7 +12,8 @@ PlayerGameHistory::PlayerGameHistory(std::string DBName)
 {
     // create DBTool
     DBN = DBName;
-    DBTool * dbt = new DBTool((char *)DBName.c_str());
+    char * dbtc = (char *) DBN.c_str();
+    DBTool * dbt = new DBTool(dbtc);
     // create PGHDBT
     PlayerGameHistoryDBT * pghdbt = new PlayerGameHistoryDBT(dbt, "PGHTable");
     // initialize vectors
@@ -39,7 +40,8 @@ PlayerGameHistory::PlayerGameHistory(std::string DBName)
 PlayerGameHistory::~PlayerGameHistory() {
     // need all the other objects to save :)
     // create dbt
-    DBTool * dbt = new DBTool((char *) DBN.c_str());
+    char * dbtc = (char *) DBN.c_str();
+    DBTool * dbt = new DBTool(dbtc);
     // delete old data from tables
     PlayerGameHistoryDBT * pghdbt = new PlayerGameHistoryDBT(dbt, "PGHTable");
     pghdbt->del_rows();
