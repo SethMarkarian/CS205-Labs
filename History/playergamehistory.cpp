@@ -22,6 +22,7 @@ PlayerGameHistory::PlayerGameHistory(std::string DBName)
     // fill in the games vector with nullptrs so it is the right size
     for(int i = 0; i < game_strings.size(); i++){
         games.push_back(nullptr);
+        // note: the Game * 's get added in GameHistory
     }
     // create players based on ID numbers
     for(int i = 0; i < player_strings.size(); i++){
@@ -37,7 +38,9 @@ PlayerGameHistory::PlayerGameHistory(std::string DBName)
 //Destructor
 PlayerGameHistory::~PlayerGameHistory() {
     // need all the other objects to save :)
+    // create dbt
     DBTool * dbt = new DBTool((char *) DBN.c_str());
+    // delete old data from tables
     PlayerGameHistoryDBT * pghdbt = new PlayerGameHistoryDBT(dbt, "PGHTable");
     pghdbt->del_rows();
     GameDBT * gdbt = new GameDBT(dbt, "GTable");
@@ -49,26 +52,35 @@ PlayerGameHistory::~PlayerGameHistory() {
     GameHistoryDBT * ghdbt = new GameHistoryDBT(dbt, "GHTable");
     ghdbt->del_rows();
     delete ghdbt;
+    // create strings to hold Player ids and Game ids
     std::string pl_ids;
     std::string g_ids;
     if(players.size() > 0)
     {
+        // first player id is separated out for formatting
         pl_ids = std::to_string(players[0]->getID());
+        players[0]->save(dbt);
     }
     for(int i = 1; i < players.size(); i++){
+        // instruct each player to save
         players[i]->save(dbt);
+        // add their id to the string
         pl_ids += ",";
         pl_ids += std::to_string(players[i]->getID());
     }
     if(games.size() > 0)
     {
+        // first game id is separated out for formatting
         g_ids = std::to_string(games[0]->getID());
     }
     for(int i = 1; i < games.size(); i++){
+        // add each game's id to the string
         g_ids += ",";
         g_ids += std::to_string(games[i]->getID());
     }
+    // save the data to the table
     pghdbt->add_row(0, pl_ids, g_ids);
+    // delete as necessary
     delete pghdbt;
     delete dbt;
 }

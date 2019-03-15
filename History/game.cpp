@@ -5,11 +5,7 @@
  */
 Game::Game()
 {
-    // need to have a constructor based on ID number and pointer passed in
-    // check if GDBT exists/ make one
-    // load in data from tabled based on ID number; load in attributes
-    // I think that's it bro
-    // need to have constructor based on new row
+
 }
 
 /**
@@ -28,8 +24,11 @@ Game::Game(Player *p, char * n, int f)
 
 Game::Game(Player *p, int iD, DBTool * dbtpass)
 {
+    // create gdbt
     GameDBT * gdbt = new GameDBT(dbtpass, "GTable");
+    // get values from gdbt
     std::vector<std::string> vals = gdbt->ret_game(iD);
+    // set id, pl, name, and fs
     id = iD;
     pl = p;
     name = (char*)vals[1].c_str();
@@ -81,11 +80,14 @@ void Game::setFinalScore(int i) {
 }
 
 void Game::save(DBTool *dbt_passed){
+    // create gdbt
     GameDBT * gdbt = new GameDBT(dbt_passed, "GTable");
     if(id == -1)
     {
+        // set id if this game wasn't loaded from the table
         id = gdbt->num_rows();
     }
+    // save data to table
     gdbt->add_row(id, name, fs, pl->getID());
     delete gdbt;
 }

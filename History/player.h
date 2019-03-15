@@ -17,6 +17,9 @@ class PlayerGameHistory;
 
 class Player
 {
+    /**
+     * @brief id id on table row
+     */
     int id;
 
     /**
@@ -45,8 +48,7 @@ class Player
     GameHistory* gh;
 
     DBTool * dbtool;
-    // BIG ISSUE: It's coming up as unknown type. Unsure why. It works in every other class it's included in!
-
+    // BIG ISSUE: It's coming up as unknown type. Unsure why
 public:
 
     /**
@@ -63,6 +65,12 @@ public:
      */
     Player(Game *g, char * f, char * l, char * a);
     Player(char * f, char * l, char * a);
+    /**
+     * @brief Player Constructor to load from database table
+     * @param iD of row on table
+     * @param dbt_pass Database Tool
+     * @param pgh PlayerGameHistory calling this
+     */
     Player(int iD, DBTool * dbt_pass, PlayerGameHistory* pgh);
     //Destructor
     ~Player();
@@ -103,10 +111,22 @@ public:
      */
     void addToGameHistory(Game * g);
 
+    /**
+     * @brief addGame changes this player's most recently played game
+     * @param g
+     */
     void addGame(Game * g);
 
+    /**
+     * @brief getID return this player's ID
+     * @return int id
+     */
     int getID();
 
+    /**
+     * @brief save saves this player's data to the table
+     * @param dbt_passed DBTool to use
+     */
     void save(DBTool * dbt_passed);
 };
 

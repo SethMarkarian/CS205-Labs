@@ -99,6 +99,11 @@ public:
     std::vector<Game *> top_3_games();
     std::vector<Player *> retPlayers();
 
+    /**
+     * @brief insert_game inserts a game into games at an index
+     * @param g game to insert
+     * @param i index
+     */
     void insert_game(Game* g, int i);
 };
 

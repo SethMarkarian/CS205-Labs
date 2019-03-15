@@ -24,6 +24,9 @@ class Game
      */
     int fs; //final score
 
+    /**
+     * @brief id id on table row
+     */
     int id;
 public:
 
@@ -40,6 +43,12 @@ public:
      */
     Game(Player *p, char * n, int f);
 
+    /**
+     * @brief Game Constructor to load from database table
+     * @param p this game's Player
+     * @param iD id of row on table
+     * @param dbtpass Database Tool
+     */
     Game(Player *p, int iD, DBTool * dbtpass);
 
 
@@ -65,10 +74,21 @@ public:
 
     void setFinalScore(int i);
 
+    /**
+     * @brief getID returns id
+     * @return int id
+     */
     int getID();
 
+    /**
+     * @brief print_game prints the name of the game
+     */
     void print_game();
 
+    /**
+     * @brief save saves this data to the table
+     * @param dbt_passed DBTool to use
+     */
     void save(DBTool *dbt_passed);
 };
 

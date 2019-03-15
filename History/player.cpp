@@ -7,25 +7,24 @@
  */
 Player::Player()
 {
-    // need to have a constructor based on ID number
-    // check if PDBT exists/ make one
-    // load in data from table based on ID number; attributes here
-    // create a new Game based on its id number
-    // create a new GameHistory based on its id number, pass pointer
-    // need to have global DBT and a constructor based on adding a new row
+
 }
 
 Player::Player(int iD, DBTool * dbt_pass, PlayerGameHistory * pgh)
 {
+    // set id
     id = iD;
+    // create pdbt
     PlayerDBT * pdbt = new PlayerDBT(dbtool, "PTable");
+    // get values from pdbt
     std::vector<std::string> vals = pdbt->ret_p(id);
+    // set instance variables
     fn = (char*) vals[1].c_str();
     ln = (char*) vals[2].c_str();
     ad = (char*) vals[3].c_str();
-    // need to make the game history
+    // make the player's game history
     gh = new GameHistory(atoi(vals[5].c_str()), dbt_pass, this, pgh);
-    // then, from game history, return the most recent game
+    // then, from game history, return the most recent game, which is this player's game
     ga = gh->last_game();
     delete pdbt;
 }
@@ -53,7 +52,7 @@ Player::Player(char * f, char * l, char * a)
     ln = l;
     ad = a;
     gh = new GameHistory(this);
-    id = -1;
+    id = -1; // this will be changed when saving
 }
 
 //Destructor
@@ -118,12 +117,16 @@ int Player::getID(){
 }
 
 void Player::save(DBTool *dbt_passed){
+    // create pdbt
     PlayerDBT * pdbt = new PlayerDBT(dbt_passed, "PTable");
     if(id == -1)
     {
+        // set id if this was not loaded from the table before
         id = pdbt->num_rows();
     }
+    // add row to PTable
     pdbt->add_row(id, fn, ln, ad, ga->getID(), gh->getID());
+    // have the GameHistory save
     gh->save(dbt_passed);
     delete pdbt;
 }
