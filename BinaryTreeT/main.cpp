@@ -1,9 +1,13 @@
 #include <iostream>
+#include "binarytreet.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
-    return 0;
+    BinaryTreeT<int> bt = BinaryTreeT<int>();
+    bt.insert(5);
+    bt.insert(8);
+    node * n = bt.search(5);
+    bt.destroy();
 }
