@@ -12,7 +12,9 @@ SUBDIRS += \
     #TextFinder \
     #RobotsGUI \
     #WormGUI #\
-    History #\
+    History \ #\
+    Stack \
+    BinaryTreeT
     #HistoryUnitTests
 
 HEADERS += \
