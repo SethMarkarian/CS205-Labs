@@ -12,7 +12,7 @@ SUBDIRS += \
     #TextFinder \
     #RobotsGUI \
     #WormGUI #\
-    History \ #\
+    #History \ #\
     Templates
     #HistoryUnitTests
 
