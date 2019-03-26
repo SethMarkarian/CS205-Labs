@@ -13,7 +13,10 @@ SUBDIRS += \
     #RobotsGUI \
     #WormGUI #\
     #History \ #\
-    Templates
+    Templates \
+    History \ #\
+    Stack \
+    BinaryTreeT
     #HistoryUnitTests
 
 HEADERS += \
