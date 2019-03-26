@@ -15,7 +15,7 @@ SUBDIRS += \
     #History \ #\
     Templates \
     History \ #\
-    Stack \
+    #Stack \
     BinaryTreeT
     #HistoryUnitTests
 
